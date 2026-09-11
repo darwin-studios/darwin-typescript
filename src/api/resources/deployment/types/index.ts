@@ -1,2 +1,2 @@
-export * from "./CreateAiDeploymentRequestResponse.js";
-export * from "./GetAiDeploymentResponse.js";
+export * from "./CreateAiDeploymentRequestDeploymentResponse.js";
+export * from "./GetAiDeploymentDeploymentResponse.js";

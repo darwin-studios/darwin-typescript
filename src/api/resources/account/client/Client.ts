@@ -15,9 +15,6 @@ export declare namespace AccountClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Inspect the authenticated Darwin account and its AI inventory.
- */
 export class AccountClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<AccountClient.Options>;
 

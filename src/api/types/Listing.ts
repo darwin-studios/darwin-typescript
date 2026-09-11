@@ -6,6 +6,8 @@ export interface Listing {
     id: string;
     aiId: string;
     type: Darwin.ListingType;
+    executionDomain: Darwin.ListingExecutionDomain;
+    capabilityKind?: (Listing.CapabilityKind | null) | undefined;
     title: string;
     description?: (string | null) | undefined;
     category?: (string | null) | undefined;
@@ -16,8 +18,15 @@ export interface Listing {
     allowedAiIds?: string[] | undefined;
     pricing?: Darwin.ListingPricing | undefined;
     availability?: Record<string, unknown> | undefined;
+    availabilityLimits?: Record<string, unknown> | undefined;
+    /** Compatibility alias for availabilityLimits. */
     capacity?: Record<string, unknown> | undefined;
     attributes?: Record<string, unknown> | undefined;
+    sellerAcceptancePolicy?: Darwin.SellerAcceptancePolicy | undefined;
+    customerAccountPolicy?: Darwin.CustomerAccountPolicy | undefined;
+    fulfillmentDefinition?: Darwin.FulfillmentDefinition | undefined;
+    /** Private owner projection only. Public Browse responses omit this field. */
+    operationalReadiness?: Listing.OperationalReadiness | undefined;
     preferredDealTemplateKey?: (string | null) | undefined;
     supportedDealTemplateKeys?: string[] | undefined;
     sourceId?: (string | null) | undefined;
@@ -26,4 +35,24 @@ export interface Listing {
     revision: number;
     createdAt: string;
     updatedAt: string;
+}
+
+export namespace Listing {
+    export const CapabilityKind = {
+        Api: "API",
+        BrowserAutomation: "BROWSER_AUTOMATION",
+        Mcp: "MCP",
+        SoftwareAction: "SOFTWARE_ACTION",
+        Other: "OTHER",
+    } as const;
+    export type CapabilityKind = (typeof CapabilityKind)[keyof typeof CapabilityKind];
+    /** Private owner projection only. Public Browse responses omit this field. */
+    export const OperationalReadiness = {
+        Unconfigured: "UNCONFIGURED",
+        Activating: "ACTIVATING",
+        Ready: "READY",
+        Degraded: "DEGRADED",
+        Disabled: "DISABLED",
+    } as const;
+    export type OperationalReadiness = (typeof OperationalReadiness)[keyof typeof OperationalReadiness];
 }

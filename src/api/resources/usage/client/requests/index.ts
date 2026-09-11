@@ -1,1 +1,1 @@
-export type { GetAiUsageRequest } from "./GetAiUsageRequest.js";
+export type { GetAiUsageUsageRequest } from "./GetAiUsageUsageRequest.js";

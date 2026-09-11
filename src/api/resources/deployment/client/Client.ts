@@ -16,9 +16,6 @@ export declare namespace DeploymentClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Inspect deployment state and submit reviewable deployment requests.
- */
 export class DeploymentClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<DeploymentClient.Options>;
 
@@ -27,7 +24,7 @@ export class DeploymentClient {
     }
 
     /**
-     * @param {Darwin.GetAiDeploymentRequest} request
+     * @param {Darwin.GetAiDeploymentDeploymentRequest} request
      * @param {DeploymentClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -43,16 +40,16 @@ export class DeploymentClient {
      *     })
      */
     public getAiDeployment(
-        request: Darwin.GetAiDeploymentRequest,
+        request: Darwin.GetAiDeploymentDeploymentRequest,
         requestOptions?: DeploymentClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetAiDeploymentResponse> {
+    ): core.HttpResponsePromise<Darwin.GetAiDeploymentDeploymentResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getAiDeployment(request, requestOptions));
     }
 
     private async __getAiDeployment(
-        request: Darwin.GetAiDeploymentRequest,
+        request: Darwin.GetAiDeploymentDeploymentRequest,
         requestOptions?: DeploymentClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetAiDeploymentResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetAiDeploymentDeploymentResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -77,7 +74,10 @@ export class DeploymentClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetAiDeploymentResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.GetAiDeploymentDeploymentResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
@@ -125,14 +125,14 @@ export class DeploymentClient {
     public createAiDeploymentRequest(
         request: Darwin.CreateAiDeploymentRequest,
         requestOptions?: DeploymentClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CreateAiDeploymentRequestResponse> {
+    ): core.HttpResponsePromise<Darwin.CreateAiDeploymentRequestDeploymentResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createAiDeploymentRequest(request, requestOptions));
     }
 
     private async __createAiDeploymentRequest(
         request: Darwin.CreateAiDeploymentRequest,
         requestOptions?: DeploymentClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CreateAiDeploymentRequestResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.CreateAiDeploymentRequestDeploymentResponse>> {
         const { aiId, "Idempotency-Key": idempotencyKey, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -162,7 +162,7 @@ export class DeploymentClient {
         });
         if (_response.ok) {
             return {
-                data: _response.body as Darwin.CreateAiDeploymentRequestResponse,
+                data: _response.body as Darwin.CreateAiDeploymentRequestDeploymentResponse,
                 rawResponse: _response.rawResponse,
             };
         }

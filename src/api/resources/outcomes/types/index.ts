@@ -1,3 +1,3 @@
-export * from "./GetOutcomeResponse.js";
-export * from "./ListOutcomesResponse.js";
-export * from "./SubmitOutcomeEvidenceResponse.js";
+export * from "./GetOutcomeOutcomesResponse.js";
+export * from "./ListOutcomesOutcomesResponse.js";
+export * from "./SubmitOutcomeEvidenceOutcomesResponse.js";

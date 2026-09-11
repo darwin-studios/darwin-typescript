@@ -2,14 +2,11 @@
 
 import { AccountClient } from "./api/resources/account/client/Client.js";
 import { AisClient } from "./api/resources/ais/client/Client.js";
-import { ApplicationsClient } from "./api/resources/applications/client/Client.js";
-import { BillingClient } from "./api/resources/billing/client/Client.js";
+import { ConnectClient } from "./api/resources/connect/client/Client.js";
 import { ConnectionsClient } from "./api/resources/connections/client/Client.js";
 import { ConversationsClient } from "./api/resources/conversations/client/Client.js";
 import { DealsClient } from "./api/resources/deals/client/Client.js";
 import { DeploymentClient } from "./api/resources/deployment/client/Client.js";
-import { EnrollmentClient } from "./api/resources/enrollment/client/Client.js";
-import { EphemeralGoalsClient } from "./api/resources/ephemeralGoals/client/Client.js";
 import { GoalsClient } from "./api/resources/goals/client/Client.js";
 import { IntegrationsClient } from "./api/resources/integrations/client/Client.js";
 import { ListingsClient } from "./api/resources/listings/client/Client.js";
@@ -19,13 +16,14 @@ import { OutcomesClient } from "./api/resources/outcomes/client/Client.js";
 import { PermissionsClient } from "./api/resources/permissions/client/Client.js";
 import { ReputationClient } from "./api/resources/reputation/client/Client.js";
 import { RequestsClient } from "./api/resources/requests/client/Client.js";
+import { SearchClient } from "./api/resources/search/client/Client.js";
 import { SkillsClient } from "./api/resources/skills/client/Client.js";
+import { SupplyClient } from "./api/resources/supply/client/Client.js";
 import { TasksClient } from "./api/resources/tasks/client/Client.js";
 import { ToolsClient } from "./api/resources/tools/client/Client.js";
 import { TransactionsClient } from "./api/resources/transactions/client/Client.js";
 import { UsageClient } from "./api/resources/usage/client/Client.js";
 import { VerificationClient } from "./api/resources/verification/client/Client.js";
-import { WebhooksClient } from "./api/resources/webhooks/client/Client.js";
 import type { BaseClientOptions, BaseRequestOptions } from "./BaseClient.js";
 import { type NormalizedClientOptionsWithAuth, normalizeClientOptionsWithAuth } from "./BaseClient.js";
 import * as core from "./core/index.js";
@@ -50,20 +48,18 @@ export class DarwinClient {
     protected _integrations: IntegrationsClient | undefined;
     protected _connections: ConnectionsClient | undefined;
     protected _skills: SkillsClient | undefined;
-    protected _billing: BillingClient | undefined;
     protected _conversations: ConversationsClient | undefined;
     protected _requests: RequestsClient | undefined;
     protected _tools: ToolsClient | undefined;
     protected _tasks: TasksClient | undefined;
     protected _goals: GoalsClient | undefined;
     protected _network: NetworkClient | undefined;
+    protected _search: SearchClient | undefined;
     protected _deals: DealsClient | undefined;
     protected _transactions: TransactionsClient | undefined;
     protected _outcomes: OutcomesClient | undefined;
-    protected _applications: ApplicationsClient | undefined;
-    protected _enrollment: EnrollmentClient | undefined;
-    protected _ephemeralGoals: EphemeralGoalsClient | undefined;
-    protected _webhooks: WebhooksClient | undefined;
+    protected _connect: ConnectClient | undefined;
+    protected _supply: SupplyClient | undefined;
 
     constructor(options: DarwinClient.Options) {
         this._options = normalizeClientOptionsWithAuth(options);
@@ -117,10 +113,6 @@ export class DarwinClient {
         return (this._skills ??= new SkillsClient(this._options));
     }
 
-    public get billing(): BillingClient {
-        return (this._billing ??= new BillingClient(this._options));
-    }
-
     public get conversations(): ConversationsClient {
         return (this._conversations ??= new ConversationsClient(this._options));
     }
@@ -145,6 +137,10 @@ export class DarwinClient {
         return (this._network ??= new NetworkClient(this._options));
     }
 
+    public get search(): SearchClient {
+        return (this._search ??= new SearchClient(this._options));
+    }
+
     public get deals(): DealsClient {
         return (this._deals ??= new DealsClient(this._options));
     }
@@ -157,20 +153,12 @@ export class DarwinClient {
         return (this._outcomes ??= new OutcomesClient(this._options));
     }
 
-    public get applications(): ApplicationsClient {
-        return (this._applications ??= new ApplicationsClient(this._options));
+    public get connect(): ConnectClient {
+        return (this._connect ??= new ConnectClient(this._options));
     }
 
-    public get enrollment(): EnrollmentClient {
-        return (this._enrollment ??= new EnrollmentClient(this._options));
-    }
-
-    public get ephemeralGoals(): EphemeralGoalsClient {
-        return (this._ephemeralGoals ??= new EphemeralGoalsClient(this._options));
-    }
-
-    public get webhooks(): WebhooksClient {
-        return (this._webhooks ??= new WebhooksClient(this._options));
+    public get supply(): SupplyClient {
+        return (this._supply ??= new SupplyClient(this._options));
     }
 
     /**

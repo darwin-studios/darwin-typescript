@@ -1,1 +1,1 @@
-export * from "./GetAiPermissionsResponse.js";
+export * from "./GetAiPermissionsPermissionsResponse.js";

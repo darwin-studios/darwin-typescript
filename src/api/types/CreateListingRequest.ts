@@ -4,6 +4,8 @@ import type * as Darwin from "../index.js";
 
 export interface CreateListingRequest {
     type: Darwin.ListingType;
+    executionDomain: Darwin.ListingExecutionDomain;
+    capabilityKind?: CreateListingRequest.CapabilityKind | undefined;
     title: string;
     description?: (string | null) | undefined;
     status?: Darwin.ListingStatus | undefined;
@@ -14,11 +16,27 @@ export interface CreateListingRequest {
     media?: Record<string, unknown>[] | undefined;
     pricing?: Darwin.ListingPricing | undefined;
     availability?: Record<string, unknown> | undefined;
+    availabilityLimits?: Record<string, unknown> | undefined;
+    /** Compatibility alias for availabilityLimits. */
     capacity?: Record<string, unknown> | undefined;
     attributes?: Record<string, unknown> | undefined;
+    sellerAcceptancePolicy?: Darwin.SellerAcceptancePolicy | undefined;
+    customerAccountPolicy?: Darwin.CustomerAccountPolicy | undefined;
+    fulfillmentDefinition?: Darwin.FulfillmentDefinition | undefined;
     preferredDealTemplateKey?: (string | null) | undefined;
     supportedDealTemplateKeys?: string[] | undefined;
     sourceId?: (string | null) | undefined;
     externalRef?: (string | null) | undefined;
     variants?: Darwin.ListingVariant[] | undefined;
+}
+
+export namespace CreateListingRequest {
+    export const CapabilityKind = {
+        Api: "API",
+        BrowserAutomation: "BROWSER_AUTOMATION",
+        Mcp: "MCP",
+        SoftwareAction: "SOFTWARE_ACTION",
+        Other: "OTHER",
+    } as const;
+    export type CapabilityKind = (typeof CapabilityKind)[keyof typeof CapabilityKind];
 }

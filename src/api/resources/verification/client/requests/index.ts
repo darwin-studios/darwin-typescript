@@ -1,1 +1,1 @@
-export type { GetAiVerificationRequest } from "./GetAiVerificationRequest.js";
+export type { GetAiVerificationVerificationRequest } from "./GetAiVerificationVerificationRequest.js";

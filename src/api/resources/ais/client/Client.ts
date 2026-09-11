@@ -16,9 +16,6 @@ export declare namespace AisClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Manage canonical personal and business AI identities.
- */
 export class AisClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<AisClient.Options>;
 
@@ -43,13 +40,13 @@ export class AisClient {
      */
     public listSkillCatalog(
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListSkillCatalogResponse> {
+    ): core.HttpResponsePromise<Darwin.ListSkillCatalogAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listSkillCatalog(requestOptions));
     }
 
     private async __listSkillCatalog(
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListSkillCatalogResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListSkillCatalogAisResponse>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -73,7 +70,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListSkillCatalogResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListSkillCatalogAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -99,310 +96,7 @@ export class AisClient {
     }
 
     /**
-     * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Darwin.BadRequestError}
-     * @throws {@link Darwin.UnauthorizedError}
-     * @throws {@link Darwin.ForbiddenError}
-     * @throws {@link Darwin.NotFoundError}
-     * @throws {@link errors.DarwinError}
-     * @throws {@link errors.DarwinTimeoutError}
-     *
-     * @example
-     *     await client.ais.listAIs()
-     */
-    public listAIs(requestOptions?: AisClient.RequestOptions): core.HttpResponsePromise<Darwin.ListAIsResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__listAIs(requestOptions));
-    }
-
-    private async __listAIs(
-        requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListAIsResponse>> {
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.DarwinEnvironment.Production,
-                "ais",
-            ),
-            method: "GET",
-            headers: _headers,
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return { data: _response.body as Darwin.ListAIsResponse, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 400:
-                    throw new Darwin.BadRequestError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 401:
-                    throw new Darwin.UnauthorizedError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 403:
-                    throw new Darwin.ForbiddenError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 404:
-                    throw new Darwin.NotFoundError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                default:
-                    throw new errors.DarwinError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/ais");
-    }
-
-    /**
-     * Every Darwin account already owns exactly one personal AI. This endpoint creates an additional business AI. A verified phone number may own up to three business AIs.
-     *
-     * @param {Darwin.CreateAiRequest} request
-     * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Darwin.BadRequestError}
-     * @throws {@link Darwin.UnauthorizedError}
-     * @throws {@link Darwin.ForbiddenError}
-     * @throws {@link Darwin.NotFoundError}
-     * @throws {@link errors.DarwinError}
-     * @throws {@link errors.DarwinTimeoutError}
-     *
-     * @example
-     *     await client.ais.createAi({
-     *         name: "name"
-     *     })
-     */
-    public createAi(
-        request: Darwin.CreateAiRequest,
-        requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CreateAiResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__createAi(request, requestOptions));
-    }
-
-    private async __createAi(
-        request: Darwin.CreateAiRequest,
-        requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CreateAiResponse>> {
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.DarwinEnvironment.Production,
-                "ais",
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
-            requestType: "json",
-            body: mergeAdditionalBodyParameters(request, requestOptions?.additionalBodyParameters),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return { data: _response.body as Darwin.CreateAiResponse, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 400:
-                    throw new Darwin.BadRequestError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 401:
-                    throw new Darwin.UnauthorizedError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 403:
-                    throw new Darwin.ForbiddenError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 404:
-                    throw new Darwin.NotFoundError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                default:
-                    throw new errors.DarwinError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "POST", "/ais");
-    }
-
-    /**
-     * @param {Darwin.GetAiRequest} request
-     * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Darwin.BadRequestError}
-     * @throws {@link Darwin.UnauthorizedError}
-     * @throws {@link Darwin.ForbiddenError}
-     * @throws {@link Darwin.NotFoundError}
-     * @throws {@link errors.DarwinError}
-     * @throws {@link errors.DarwinTimeoutError}
-     *
-     * @example
-     *     await client.ais.getAi({
-     *         aiId: "aiId"
-     *     })
-     */
-    public getAi(
-        request: Darwin.GetAiRequest,
-        requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetAiResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__getAi(request, requestOptions));
-    }
-
-    private async __getAi(
-        request: Darwin.GetAiRequest,
-        requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetAiResponse>> {
-        const { aiId } = request;
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.DarwinEnvironment.Production,
-                `ais/${core.url.encodePathParam(aiId)}`,
-            ),
-            method: "GET",
-            headers: _headers,
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return { data: _response.body as Darwin.GetAiResponse, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 400:
-                    throw new Darwin.BadRequestError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 401:
-                    throw new Darwin.UnauthorizedError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 403:
-                    throw new Darwin.ForbiddenError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 404:
-                    throw new Darwin.NotFoundError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                default:
-                    throw new errors.DarwinError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/ais/{aiId}");
-    }
-
-    /**
-     * @param {Darwin.UpdateAiRequest} request
-     * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @throws {@link Darwin.BadRequestError}
-     * @throws {@link Darwin.UnauthorizedError}
-     * @throws {@link Darwin.ForbiddenError}
-     * @throws {@link Darwin.NotFoundError}
-     * @throws {@link errors.DarwinError}
-     * @throws {@link errors.DarwinTimeoutError}
-     *
-     * @example
-     *     await client.ais.updateAi({
-     *         aiId: "aiId"
-     *     })
-     */
-    public updateAi(
-        request: Darwin.UpdateAiRequest,
-        requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.UpdateAiResponse> {
-        return core.HttpResponsePromise.fromPromise(this.__updateAi(request, requestOptions));
-    }
-
-    private async __updateAi(
-        request: Darwin.UpdateAiRequest,
-        requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.UpdateAiResponse>> {
-        const { aiId, ..._body } = request;
-        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
-        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            _authRequest.headers,
-            this._options?.headers,
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.DarwinEnvironment.Production,
-                `ais/${core.url.encodePathParam(aiId)}`,
-            ),
-            method: "PATCH",
-            headers: _headers,
-            contentType: "application/json",
-            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
-            requestType: "json",
-            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
-            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
-            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-            fetchFn: this._options?.fetch,
-            logging: this._options.logging,
-        });
-        if (_response.ok) {
-            return { data: _response.body as Darwin.UpdateAiResponse, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            switch (_response.error.statusCode) {
-                case 400:
-                    throw new Darwin.BadRequestError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 401:
-                    throw new Darwin.UnauthorizedError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 403:
-                    throw new Darwin.ForbiddenError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                case 404:
-                    throw new Darwin.NotFoundError(_response.error.body as Darwin.Error_, _response.rawResponse);
-                default:
-                    throw new errors.DarwinError({
-                        statusCode: _response.error.statusCode,
-                        body: _response.error.body,
-                        rawResponse: _response.rawResponse,
-                    });
-            }
-        }
-
-        return handleNonStatusCodeError(_response.error, _response.rawResponse, "PATCH", "/ais/{aiId}");
-    }
-
-    /**
-     * @param {Darwin.ListAiAssetsRequest} request
+     * @param {Darwin.ListAiAssetsAisRequest} request
      * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -418,16 +112,16 @@ export class AisClient {
      *     })
      */
     public listAiAssets(
-        request: Darwin.ListAiAssetsRequest,
+        request: Darwin.ListAiAssetsAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListAiAssetsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListAiAssetsAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listAiAssets(request, requestOptions));
     }
 
     private async __listAiAssets(
-        request: Darwin.ListAiAssetsRequest,
+        request: Darwin.ListAiAssetsAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListAiAssetsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListAiAssetsAisResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -452,7 +146,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListAiAssetsResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListAiAssetsAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -498,14 +192,14 @@ export class AisClient {
     public createAiAsset(
         request: Darwin.CreateAiAssetRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CreateAiAssetResponse> {
+    ): core.HttpResponsePromise<Darwin.CreateAiAssetAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createAiAsset(request, requestOptions));
     }
 
     private async __createAiAsset(
         request: Darwin.CreateAiAssetRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CreateAiAssetResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.CreateAiAssetAisResponse>> {
         const { aiId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -533,7 +227,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.CreateAiAssetResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.CreateAiAssetAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -642,7 +336,7 @@ export class AisClient {
     }
 
     /**
-     * @param {Darwin.CompleteAiAssetUploadRequest} request
+     * @param {Darwin.CompleteAiAssetUploadAisRequest} request
      * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -659,16 +353,16 @@ export class AisClient {
      *     })
      */
     public completeAiAssetUpload(
-        request: Darwin.CompleteAiAssetUploadRequest,
+        request: Darwin.CompleteAiAssetUploadAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CompleteAiAssetUploadResponse> {
+    ): core.HttpResponsePromise<Darwin.CompleteAiAssetUploadAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__completeAiAssetUpload(request, requestOptions));
     }
 
     private async __completeAiAssetUpload(
-        request: Darwin.CompleteAiAssetUploadRequest,
+        request: Darwin.CompleteAiAssetUploadAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CompleteAiAssetUploadResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.CompleteAiAssetUploadAisResponse>> {
         const { aiId, assetId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -693,7 +387,10 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.CompleteAiAssetUploadResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.CompleteAiAssetUploadAisResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
@@ -724,7 +421,7 @@ export class AisClient {
     }
 
     /**
-     * @param {Darwin.DeleteAiAssetRequest} request
+     * @param {Darwin.DeleteAiAssetAisRequest} request
      * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -741,16 +438,16 @@ export class AisClient {
      *     })
      */
     public deleteAiAsset(
-        request: Darwin.DeleteAiAssetRequest,
+        request: Darwin.DeleteAiAssetAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.DeleteAiAssetResponse> {
+    ): core.HttpResponsePromise<Darwin.DeleteAiAssetAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__deleteAiAsset(request, requestOptions));
     }
 
     private async __deleteAiAsset(
-        request: Darwin.DeleteAiAssetRequest,
+        request: Darwin.DeleteAiAssetAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.DeleteAiAssetResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.DeleteAiAssetAisResponse>> {
         const { aiId, assetId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -775,7 +472,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.DeleteAiAssetResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.DeleteAiAssetAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -825,14 +522,14 @@ export class AisClient {
     public updateAiAsset(
         request: Darwin.UpdateAiAssetRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.UpdateAiAssetResponse> {
+    ): core.HttpResponsePromise<Darwin.UpdateAiAssetAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__updateAiAsset(request, requestOptions));
     }
 
     private async __updateAiAsset(
         request: Darwin.UpdateAiAssetRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.UpdateAiAssetResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.UpdateAiAssetAisResponse>> {
         const { aiId, assetId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -860,7 +557,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.UpdateAiAssetResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.UpdateAiAssetAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -891,7 +588,7 @@ export class AisClient {
     }
 
     /**
-     * @param {Darwin.ListAiActivityRequest} request
+     * @param {Darwin.ListAiActivityAisRequest} request
      * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -907,14 +604,14 @@ export class AisClient {
      *     })
      */
     public listAiActivity(
-        request: Darwin.ListAiActivityRequest,
+        request: Darwin.ListAiActivityAisRequest,
         requestOptions?: AisClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.AiActivityPage> {
         return core.HttpResponsePromise.fromPromise(this.__listAiActivity(request, requestOptions));
     }
 
     private async __listAiActivity(
-        request: Darwin.ListAiActivityRequest,
+        request: Darwin.ListAiActivityAisRequest,
         requestOptions?: AisClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.AiActivityPage>> {
         const { aiId, limit, cursor } = request;
@@ -975,7 +672,7 @@ export class AisClient {
     }
 
     /**
-     * @param {Darwin.ListAiMembersRequest} request
+     * @param {Darwin.ListAiMembersAisRequest} request
      * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -991,16 +688,16 @@ export class AisClient {
      *     })
      */
     public listAiMembers(
-        request: Darwin.ListAiMembersRequest,
+        request: Darwin.ListAiMembersAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListAiMembersResponse> {
+    ): core.HttpResponsePromise<Darwin.ListAiMembersAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listAiMembers(request, requestOptions));
     }
 
     private async __listAiMembers(
-        request: Darwin.ListAiMembersRequest,
+        request: Darwin.ListAiMembersAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListAiMembersResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListAiMembersAisResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1025,7 +722,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListAiMembersResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListAiMembersAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -1051,7 +748,7 @@ export class AisClient {
     }
 
     /**
-     * @param {Darwin.RemoveAiMemberRequest} request
+     * @param {Darwin.RemoveAiMemberAisRequest} request
      * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -1068,16 +765,16 @@ export class AisClient {
      *     })
      */
     public removeAiMember(
-        request: Darwin.RemoveAiMemberRequest,
+        request: Darwin.RemoveAiMemberAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.RemoveAiMemberResponse> {
+    ): core.HttpResponsePromise<Darwin.RemoveAiMemberAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__removeAiMember(request, requestOptions));
     }
 
     private async __removeAiMember(
-        request: Darwin.RemoveAiMemberRequest,
+        request: Darwin.RemoveAiMemberAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.RemoveAiMemberResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.RemoveAiMemberAisResponse>> {
         const { aiId, membershipId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1102,7 +799,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.RemoveAiMemberResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.RemoveAiMemberAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -1155,14 +852,14 @@ export class AisClient {
     public updateAiMember(
         request: Darwin.UpdateAiMemberRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.UpdateAiMemberResponse> {
+    ): core.HttpResponsePromise<Darwin.UpdateAiMemberAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__updateAiMember(request, requestOptions));
     }
 
     private async __updateAiMember(
         request: Darwin.UpdateAiMemberRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.UpdateAiMemberResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.UpdateAiMemberAisResponse>> {
         const { aiId, membershipId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1190,7 +887,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.UpdateAiMemberResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.UpdateAiMemberAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -1221,7 +918,7 @@ export class AisClient {
     }
 
     /**
-     * @param {Darwin.ListAiInvitationsRequest} request
+     * @param {Darwin.ListAiInvitationsAisRequest} request
      * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -1237,16 +934,16 @@ export class AisClient {
      *     })
      */
     public listAiInvitations(
-        request: Darwin.ListAiInvitationsRequest,
+        request: Darwin.ListAiInvitationsAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListAiInvitationsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListAiInvitationsAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listAiInvitations(request, requestOptions));
     }
 
     private async __listAiInvitations(
-        request: Darwin.ListAiInvitationsRequest,
+        request: Darwin.ListAiInvitationsAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListAiInvitationsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListAiInvitationsAisResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1271,7 +968,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListAiInvitationsResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListAiInvitationsAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -1316,14 +1013,14 @@ export class AisClient {
     public createAiInvitation(
         request: Darwin.CreateAiInvitationRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CreateAiInvitationResponse> {
+    ): core.HttpResponsePromise<Darwin.CreateAiInvitationAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createAiInvitation(request, requestOptions));
     }
 
     private async __createAiInvitation(
         request: Darwin.CreateAiInvitationRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CreateAiInvitationResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.CreateAiInvitationAisResponse>> {
         const { aiId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1351,7 +1048,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.CreateAiInvitationResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.CreateAiInvitationAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -1377,7 +1074,7 @@ export class AisClient {
     }
 
     /**
-     * @param {Darwin.RevokeAiInvitationRequest} request
+     * @param {Darwin.RevokeAiInvitationAisRequest} request
      * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -1394,16 +1091,16 @@ export class AisClient {
      *     })
      */
     public revokeAiInvitation(
-        request: Darwin.RevokeAiInvitationRequest,
+        request: Darwin.RevokeAiInvitationAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.RevokeAiInvitationResponse> {
+    ): core.HttpResponsePromise<Darwin.RevokeAiInvitationAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__revokeAiInvitation(request, requestOptions));
     }
 
     private async __revokeAiInvitation(
-        request: Darwin.RevokeAiInvitationRequest,
+        request: Darwin.RevokeAiInvitationAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.RevokeAiInvitationResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.RevokeAiInvitationAisResponse>> {
         const { aiId, invitationId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1428,7 +1125,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.RevokeAiInvitationResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.RevokeAiInvitationAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -1459,7 +1156,7 @@ export class AisClient {
     }
 
     /**
-     * @param {Darwin.ListAccessPoliciesRequest} request
+     * @param {Darwin.ListAccessPoliciesAisRequest} request
      * @param {AisClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -1475,16 +1172,16 @@ export class AisClient {
      *     })
      */
     public listAccessPolicies(
-        request: Darwin.ListAccessPoliciesRequest,
+        request: Darwin.ListAccessPoliciesAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListAccessPoliciesResponse> {
+    ): core.HttpResponsePromise<Darwin.ListAccessPoliciesAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listAccessPolicies(request, requestOptions));
     }
 
     private async __listAccessPolicies(
-        request: Darwin.ListAccessPoliciesRequest,
+        request: Darwin.ListAccessPoliciesAisRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListAccessPoliciesResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListAccessPoliciesAisResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1509,7 +1206,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListAccessPoliciesResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListAccessPoliciesAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -1557,14 +1254,14 @@ export class AisClient {
     public createAccessPolicy(
         request: Darwin.CreateAccessPolicyRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CreateAccessPolicyResponse> {
+    ): core.HttpResponsePromise<Darwin.CreateAccessPolicyAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createAccessPolicy(request, requestOptions));
     }
 
     private async __createAccessPolicy(
         request: Darwin.CreateAccessPolicyRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CreateAccessPolicyResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.CreateAccessPolicyAisResponse>> {
         const { aiId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1592,7 +1289,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.CreateAccessPolicyResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.CreateAccessPolicyAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -1637,14 +1334,14 @@ export class AisClient {
     public updateAccessPolicy(
         request: Darwin.UpdateAccessPolicyRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.UpdateAccessPolicyResponse> {
+    ): core.HttpResponsePromise<Darwin.UpdateAccessPolicyAisResponse> {
         return core.HttpResponsePromise.fromPromise(this.__updateAccessPolicy(request, requestOptions));
     }
 
     private async __updateAccessPolicy(
         request: Darwin.UpdateAccessPolicyRequest,
         requestOptions?: AisClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.UpdateAccessPolicyResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.UpdateAccessPolicyAisResponse>> {
         const { aiId, policyId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -1672,7 +1369,7 @@ export class AisClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.UpdateAccessPolicyResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.UpdateAccessPolicyAisResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {

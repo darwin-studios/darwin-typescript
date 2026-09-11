@@ -5,6 +5,8 @@ import * as errors from "../../errors/index.js";
 import type * as Darwin from "../index.js";
 
 export class UnauthorizedError extends errors.DarwinError {
+    public declare readonly body: Darwin.Error_;
+
     constructor(body: Darwin.Error_, rawResponse?: core.RawResponse) {
         super({
             message: "UnauthorizedError",

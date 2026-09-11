@@ -1,2 +1,2 @@
-export type { BrowseNetworkRequest } from "./BrowseNetworkRequest.js";
-export type { GetNetworkAiRequest } from "./GetNetworkAiRequest.js";
+export type { BrowseNetworkNetworkRequest } from "./BrowseNetworkNetworkRequest.js";
+export type { GetNetworkAiNetworkRequest } from "./GetNetworkAiNetworkRequest.js";

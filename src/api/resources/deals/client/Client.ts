@@ -16,9 +16,6 @@ export declare namespace DealsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Manage commercial work from draft terms through acceptance and payment while Darwin handles counterpart coordination.
- */
 export class DealsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<DealsClient.Options>;
 
@@ -29,7 +26,7 @@ export class DealsClient {
     /**
      * Returns the commercial work owned by the selected AI. Darwin handles counterpart discovery and coordination behind the scenes.
      *
-     * @param {Darwin.ListDealsRequest} request
+     * @param {Darwin.ListDealsDealsRequest} request
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -43,16 +40,16 @@ export class DealsClient {
      *     await client.deals.listDeals()
      */
     public listDeals(
-        request: Darwin.ListDealsRequest = {},
+        request: Darwin.ListDealsDealsRequest = {},
         requestOptions?: DealsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListDealsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListDealsDealsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listDeals(request, requestOptions));
     }
 
     private async __listDeals(
-        request: Darwin.ListDealsRequest = {},
+        request: Darwin.ListDealsDealsRequest = {},
         requestOptions?: DealsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListDealsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListDealsDealsResponse>> {
         const { aiId } = request;
         const _queryParams: Record<string, unknown> = {
             aiId,
@@ -84,7 +81,7 @@ export class DealsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListDealsResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListDealsDealsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -131,14 +128,14 @@ export class DealsClient {
     public createDeal(
         request: Darwin.CreateDealRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CreateDealResponse> {
+    ): core.HttpResponsePromise<Darwin.CreateDealDealsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createDeal(request, requestOptions));
     }
 
     private async __createDeal(
         request: Darwin.CreateDealRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CreateDealResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.CreateDealDealsResponse>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -165,7 +162,7 @@ export class DealsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.CreateDealResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.CreateDealDealsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -191,7 +188,7 @@ export class DealsClient {
     }
 
     /**
-     * @param {Darwin.GetDealRequest} request
+     * @param {Darwin.GetDealDealsRequest} request
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -207,16 +204,16 @@ export class DealsClient {
      *     })
      */
     public getDeal(
-        request: Darwin.GetDealRequest,
+        request: Darwin.GetDealDealsRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetDealResponse> {
+    ): core.HttpResponsePromise<Darwin.GetDealDealsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getDeal(request, requestOptions));
     }
 
     private async __getDeal(
-        request: Darwin.GetDealRequest,
+        request: Darwin.GetDealDealsRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetDealResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetDealDealsResponse>> {
         const { dealId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -241,7 +238,7 @@ export class DealsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetDealResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.GetDealDealsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -287,14 +284,14 @@ export class DealsClient {
     public updateDeal(
         request: Darwin.UpdateDealRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.UpdateDealResponse> {
+    ): core.HttpResponsePromise<Darwin.UpdateDealDealsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__updateDeal(request, requestOptions));
     }
 
     private async __updateDeal(
         request: Darwin.UpdateDealRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.UpdateDealResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.UpdateDealDealsResponse>> {
         const { dealId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -322,7 +319,7 @@ export class DealsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.UpdateDealResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.UpdateDealDealsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -367,14 +364,14 @@ export class DealsClient {
     public actOnDeal(
         request: Darwin.DealActionRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ActOnDealResponse> {
+    ): core.HttpResponsePromise<Darwin.ActOnDealDealsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__actOnDeal(request, requestOptions));
     }
 
     private async __actOnDeal(
         request: Darwin.DealActionRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ActOnDealResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ActOnDealDealsResponse>> {
         const { dealId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -402,7 +399,7 @@ export class DealsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ActOnDealResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ActOnDealDealsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -428,7 +425,7 @@ export class DealsClient {
     }
 
     /**
-     * @param {Darwin.ListDealPaymentsRequest} request
+     * @param {Darwin.ListDealPaymentsDealsRequest} request
      * @param {DealsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -444,16 +441,16 @@ export class DealsClient {
      *     })
      */
     public listDealPayments(
-        request: Darwin.ListDealPaymentsRequest,
+        request: Darwin.ListDealPaymentsDealsRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListDealPaymentsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListDealPaymentsDealsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listDealPayments(request, requestOptions));
     }
 
     private async __listDealPayments(
-        request: Darwin.ListDealPaymentsRequest,
+        request: Darwin.ListDealPaymentsDealsRequest,
         requestOptions?: DealsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListDealPaymentsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListDealPaymentsDealsResponse>> {
         const { dealId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -478,7 +475,7 @@ export class DealsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListDealPaymentsResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListDealPaymentsDealsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {

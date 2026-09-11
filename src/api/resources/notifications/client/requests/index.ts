@@ -1,1 +1,1 @@
-export type { GetAiNotificationsRequest } from "./GetAiNotificationsRequest.js";
+export type { GetAiNotificationsNotificationsRequest } from "./GetAiNotificationsNotificationsRequest.js";

@@ -1,2 +1,2 @@
-export * from "./ActOnRequestResponse.js";
-export * from "./ListRequestsResponse.js";
+export * from "./ActOnRequestRequestsResponse.js";
+export * from "./ListRequestsRequestsResponse.js";

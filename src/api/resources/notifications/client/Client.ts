@@ -15,9 +15,6 @@ export declare namespace NotificationsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Read the notification policy effective for an AI.
- */
 export class NotificationsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<NotificationsClient.Options>;
 
@@ -26,7 +23,7 @@ export class NotificationsClient {
     }
 
     /**
-     * @param {Darwin.GetAiNotificationsRequest} request
+     * @param {Darwin.GetAiNotificationsNotificationsRequest} request
      * @param {NotificationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -42,14 +39,14 @@ export class NotificationsClient {
      *     })
      */
     public getAiNotifications(
-        request: Darwin.GetAiNotificationsRequest,
+        request: Darwin.GetAiNotificationsNotificationsRequest,
         requestOptions?: NotificationsClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.AiNotifications> {
         return core.HttpResponsePromise.fromPromise(this.__getAiNotifications(request, requestOptions));
     }
 
     private async __getAiNotifications(
-        request: Darwin.GetAiNotificationsRequest,
+        request: Darwin.GetAiNotificationsNotificationsRequest,
         requestOptions?: NotificationsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.AiNotifications>> {
         const { aiId } = request;

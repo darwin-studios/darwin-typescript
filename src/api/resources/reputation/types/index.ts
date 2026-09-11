@@ -1,1 +1,1 @@
-export * from "./GetAiReputationResponse.js";
+export * from "./GetAiReputationReputationResponse.js";

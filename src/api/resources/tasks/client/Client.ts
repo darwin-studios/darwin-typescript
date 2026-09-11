@@ -16,9 +16,6 @@ export declare namespace TasksClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Deprecated compatibility API for executable work now represented by Goals.
- */
 export class TasksClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TasksClient.Options>;
 
@@ -31,7 +28,7 @@ export class TasksClient {
      *
      * Deprecated compatibility alias. Use `GET /goals`.
      *
-     * @param {Darwin.ListTasksRequest} request
+     * @param {Darwin.ListTasksTasksRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -45,16 +42,16 @@ export class TasksClient {
      *     await client.tasks.listTasks()
      */
     public listTasks(
-        request: Darwin.ListTasksRequest = {},
+        request: Darwin.ListTasksTasksRequest = {},
         requestOptions?: TasksClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListTasksResponse> {
+    ): core.HttpResponsePromise<Darwin.ListTasksTasksResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listTasks(request, requestOptions));
     }
 
     private async __listTasks(
-        request: Darwin.ListTasksRequest = {},
+        request: Darwin.ListTasksTasksRequest = {},
         requestOptions?: TasksClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListTasksResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListTasksTasksResponse>> {
         const { aiId, mode } = request;
         const _queryParams: Record<string, unknown> = {
             aiId,
@@ -87,7 +84,7 @@ export class TasksClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListTasksResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListTasksTasksResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -135,14 +132,14 @@ export class TasksClient {
     public createTask(
         request: Darwin.CreateTaskRequest,
         requestOptions?: TasksClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CreateTaskResponse> {
+    ): core.HttpResponsePromise<Darwin.CreateTaskTasksResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createTask(request, requestOptions));
     }
 
     private async __createTask(
         request: Darwin.CreateTaskRequest,
         requestOptions?: TasksClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CreateTaskResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.CreateTaskTasksResponse>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -169,7 +166,7 @@ export class TasksClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.CreateTaskResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.CreateTaskTasksResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -197,7 +194,7 @@ export class TasksClient {
     /**
      * @deprecated
      *
-     * @param {Darwin.GetTaskRequest} request
+     * @param {Darwin.GetTaskTasksRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -213,16 +210,16 @@ export class TasksClient {
      *     })
      */
     public getTask(
-        request: Darwin.GetTaskRequest,
+        request: Darwin.GetTaskTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetTaskResponse> {
+    ): core.HttpResponsePromise<Darwin.GetTaskTasksResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getTask(request, requestOptions));
     }
 
     private async __getTask(
-        request: Darwin.GetTaskRequest,
+        request: Darwin.GetTaskTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetTaskResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetTaskTasksResponse>> {
         const { id, aiId } = request;
         const _queryParams: Record<string, unknown> = {
             aiId,
@@ -254,7 +251,7 @@ export class TasksClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetTaskResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.GetTaskTasksResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -282,7 +279,7 @@ export class TasksClient {
     /**
      * @deprecated
      *
-     * @param {Darwin.UpdateTaskBody} request
+     * @param {Darwin.UpdateTaskTasksRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -299,16 +296,16 @@ export class TasksClient {
      *     })
      */
     public updateTask(
-        request: Darwin.UpdateTaskBody,
+        request: Darwin.UpdateTaskTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.UpdateTaskResponse> {
+    ): core.HttpResponsePromise<Darwin.UpdateTaskTasksResponse> {
         return core.HttpResponsePromise.fromPromise(this.__updateTask(request, requestOptions));
     }
 
     private async __updateTask(
-        request: Darwin.UpdateTaskBody,
+        request: Darwin.UpdateTaskTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.UpdateTaskResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.UpdateTaskTasksResponse>> {
         const { id, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -336,7 +333,7 @@ export class TasksClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.UpdateTaskResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.UpdateTaskTasksResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -366,7 +363,7 @@ export class TasksClient {
      *
      * Deprecated compatibility alias for the goal lifecycle. Use `POST /goals/{id}/actions`.
      *
-     * @param {Darwin.ActOnTaskRequest} request
+     * @param {Darwin.ActOnTaskTasksRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -385,16 +382,16 @@ export class TasksClient {
      *     })
      */
     public actOnTask(
-        request: Darwin.ActOnTaskRequest,
+        request: Darwin.ActOnTaskTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ActOnTaskResponse> {
+    ): core.HttpResponsePromise<Darwin.ActOnTaskTasksResponse> {
         return core.HttpResponsePromise.fromPromise(this.__actOnTask(request, requestOptions));
     }
 
     private async __actOnTask(
-        request: Darwin.ActOnTaskRequest,
+        request: Darwin.ActOnTaskTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ActOnTaskResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ActOnTaskTasksResponse>> {
         const { id, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -422,7 +419,7 @@ export class TasksClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ActOnTaskResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ActOnTaskTasksResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -450,7 +447,7 @@ export class TasksClient {
     /**
      * @deprecated
      *
-     * @param {Darwin.RequestTaskPublicationApprovalRequest} request
+     * @param {Darwin.RequestTaskPublicationApprovalTasksRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -467,14 +464,14 @@ export class TasksClient {
      *     })
      */
     public requestTaskPublicationApproval(
-        request: Darwin.RequestTaskPublicationApprovalRequest,
+        request: Darwin.RequestTaskPublicationApprovalTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.ApprovalResult> {
         return core.HttpResponsePromise.fromPromise(this.__requestTaskPublicationApproval(request, requestOptions));
     }
 
     private async __requestTaskPublicationApproval(
-        request: Darwin.RequestTaskPublicationApprovalRequest,
+        request: Darwin.RequestTaskPublicationApprovalTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.ApprovalResult>> {
         const { id, body: _body } = request;
@@ -539,7 +536,7 @@ export class TasksClient {
      *
      * Deprecated compatibility alias. Use `POST /goals/{id}/publication-requests`.
      *
-     * @param {Darwin.RequestTaskPublicationRequest} request
+     * @param {Darwin.RequestTaskPublicationTasksRequest} request
      * @param {TasksClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -556,14 +553,14 @@ export class TasksClient {
      *     })
      */
     public requestTaskPublication(
-        request: Darwin.RequestTaskPublicationRequest,
+        request: Darwin.RequestTaskPublicationTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.PublicationRequestResult> {
         return core.HttpResponsePromise.fromPromise(this.__requestTaskPublication(request, requestOptions));
     }
 
     private async __requestTaskPublication(
-        request: Darwin.RequestTaskPublicationRequest,
+        request: Darwin.RequestTaskPublicationTasksRequest,
         requestOptions?: TasksClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.PublicationRequestResult>> {
         const { id, body: _body } = request;

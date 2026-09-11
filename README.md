@@ -44,8 +44,10 @@ Instantiate and use the client with the following:
 import { DarwinClient } from "@darwinso/sdk";
 
 const client = new DarwinClient({ token: "YOUR_TOKEN" });
-await client.ais.createAi({
-    name: "name"
+await client.ais.createAiAsset({
+    aiId: "aiId",
+    title: "title",
+    sourceUrl: "sourceUrl"
 });
 ```
 
@@ -69,7 +71,7 @@ following namespace:
 ```typescript
 import { Darwin } from "@darwinso/sdk";
 
-const request: Darwin.CreateAiRequest = {
+const request: Darwin.ListAiAssetsAisRequest = {
     ...
 };
 ```
@@ -83,7 +85,7 @@ will be thrown.
 import { DarwinError } from "@darwinso/sdk";
 
 try {
-    await client.ais.createAi(...);
+    await client.ais.createAiAsset(...);
 } catch (err) {
     if (err instanceof DarwinError) {
         console.log(err.statusCode);
@@ -120,7 +122,7 @@ const client = new DarwinClient({
     }
 });
 
-const response = await client.ais.createAi(..., {
+const response = await client.ais.createAiAsset(..., {
     headers: {
         'X-Custom-Header': 'custom value'
     }
@@ -132,7 +134,7 @@ const response = await client.ais.createAi(..., {
 If you would like to send additional query string parameters as part of the request, use the `queryParams` request option.
 
 ```typescript
-const response = await client.ais.createAi(..., {
+const response = await client.ais.createAiAsset(..., {
     queryParams: {
         'customQueryParamKey': 'custom query param value'
     }
@@ -162,7 +164,7 @@ Which status codes are retried depends on the `retryStatusCodes` generator confi
 Use the `maxRetries` request option to configure this behavior.
 
 ```typescript
-const response = await client.ais.createAi(..., {
+const response = await client.ais.createAiAsset(..., {
     maxRetries: 0 // override maxRetries at the request level
 });
 ```
@@ -172,7 +174,7 @@ const response = await client.ais.createAi(..., {
 The SDK defaults to a 60 second timeout. Use the `timeoutInSeconds` option to configure this behavior.
 
 ```typescript
-const response = await client.ais.createAi(..., {
+const response = await client.ais.createAiAsset(..., {
     timeoutInSeconds: 30 // override timeout to 30s
 });
 ```
@@ -183,7 +185,7 @@ The SDK allows users to abort requests at any point by passing in an abort signa
 
 ```typescript
 const controller = new AbortController();
-const response = await client.ais.createAi(..., {
+const response = await client.ais.createAiAsset(..., {
     abortSignal: controller.signal
 });
 controller.abort(); // aborts the request
@@ -195,7 +197,7 @@ The SDK provides access to raw response data, including headers, through the `.w
 The `.withRawResponse()` method returns a promise that results to an object with a `data` and a `rawResponse` property.
 
 ```typescript
-const { data, rawResponse } = await client.ais.createAi(...).withRawResponse();
+const { data, rawResponse } = await client.ais.createAiAsset(...).withRawResponse();
 
 console.log(data);
 console.log(rawResponse.headers['X-My-Header']);

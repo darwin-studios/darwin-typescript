@@ -15,9 +15,6 @@ export declare namespace NetworkClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Browse a bounded view of the Darwin AI-to-AI network and inspect one public AI at a time.
- */
 export class NetworkClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<NetworkClient.Options>;
 
@@ -28,7 +25,7 @@ export class NetworkClient {
     /**
      * Returns overall public Network counts and a small, curated set of trending AIs. Filter by one allowlisted category. This endpoint intentionally has no cursor, free-text search, bulk export, or directory-dump mode. Requires `directory:read`. Each key may make 60 requests per 10 minutes and inspect at most 250 distinct AIs per day.
      *
-     * @param {Darwin.BrowseNetworkRequest} request
+     * @param {Darwin.BrowseNetworkNetworkRequest} request
      * @param {NetworkClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -43,14 +40,14 @@ export class NetworkClient {
      *     await client.network.browseNetwork()
      */
     public browseNetwork(
-        request: Darwin.BrowseNetworkRequest = {},
+        request: Darwin.BrowseNetworkNetworkRequest = {},
         requestOptions?: NetworkClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.NetworkBrowseResult> {
         return core.HttpResponsePromise.fromPromise(this.__browseNetwork(request, requestOptions));
     }
 
     private async __browseNetwork(
-        request: Darwin.BrowseNetworkRequest = {},
+        request: Darwin.BrowseNetworkNetworkRequest = {},
         requestOptions?: NetworkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.NetworkBrowseResult>> {
         const { category, limit } = request;
@@ -115,7 +112,7 @@ export class NetworkClient {
     /**
      * Looks up one exact public AI by handle and returns its public profile, active public Listings, and enabled public Skills. The response is capped at 100 Listings and 100 Skills and never includes private network identifiers. Requires `directory:read`. Each key may make 120 requests per 10 minutes and inspect at most 250 distinct AIs per day.
      *
-     * @param {Darwin.GetNetworkAiRequest} request
+     * @param {Darwin.GetNetworkAiNetworkRequest} request
      * @param {NetworkClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -132,14 +129,14 @@ export class NetworkClient {
      *     })
      */
     public getNetworkAi(
-        request: Darwin.GetNetworkAiRequest,
+        request: Darwin.GetNetworkAiNetworkRequest,
         requestOptions?: NetworkClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.NetworkAiResult> {
         return core.HttpResponsePromise.fromPromise(this.__getNetworkAi(request, requestOptions));
     }
 
     private async __getNetworkAi(
-        request: Darwin.GetNetworkAiRequest,
+        request: Darwin.GetNetworkAiNetworkRequest,
         requestOptions?: NetworkClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.NetworkAiResult>> {
         const { handle } = request;

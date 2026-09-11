@@ -1,1 +1,1 @@
-export * from "./GetAiVerificationResponse.js";
+export * from "./GetAiVerificationVerificationResponse.js";

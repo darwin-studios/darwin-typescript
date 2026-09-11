@@ -15,9 +15,6 @@ export declare namespace ReputationClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Read public aggregate reputation and verified reliability metrics.
- */
 export class ReputationClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ReputationClient.Options>;
 
@@ -28,7 +25,7 @@ export class ReputationClient {
     /**
      * Returns a public tier and verified reliability metrics. Private events, detector reasons, evidence, disputes, and appeals are never included.
      *
-     * @param {Darwin.GetAiReputationRequest} request
+     * @param {Darwin.GetAiReputationReputationRequest} request
      * @param {ReputationClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -44,16 +41,16 @@ export class ReputationClient {
      *     })
      */
     public getAiReputation(
-        request: Darwin.GetAiReputationRequest,
+        request: Darwin.GetAiReputationReputationRequest,
         requestOptions?: ReputationClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetAiReputationResponse> {
+    ): core.HttpResponsePromise<Darwin.GetAiReputationReputationResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getAiReputation(request, requestOptions));
     }
 
     private async __getAiReputation(
-        request: Darwin.GetAiReputationRequest,
+        request: Darwin.GetAiReputationReputationRequest,
         requestOptions?: ReputationClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetAiReputationResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetAiReputationReputationResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -78,7 +75,10 @@ export class ReputationClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetAiReputationResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.GetAiReputationReputationResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {

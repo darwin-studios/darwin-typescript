@@ -1,5 +1,5 @@
-export type { ActOnGoalRequest } from "./ActOnGoalRequest.js";
-export type { GetGoalRequest } from "./GetGoalRequest.js";
-export type { ListGoalsRequest } from "./ListGoalsRequest.js";
-export type { RequestGoalPublicationRequest } from "./RequestGoalPublicationRequest.js";
-export type { UpdateGoalBody } from "./UpdateGoalBody.js";
+export type { ActOnGoalGoalsRequest } from "./ActOnGoalGoalsRequest.js";
+export type { GetGoalGoalsRequest } from "./GetGoalGoalsRequest.js";
+export type { ListGoalsGoalsRequest } from "./ListGoalsGoalsRequest.js";
+export type { RequestGoalPublicationGoalsRequest } from "./RequestGoalPublicationGoalsRequest.js";
+export type { UpdateGoalGoalsRequest } from "./UpdateGoalGoalsRequest.js";

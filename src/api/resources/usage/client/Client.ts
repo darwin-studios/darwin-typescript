@@ -15,9 +15,6 @@ export declare namespace UsageClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Read sanitized AI Wallet, dollar-denominated usage, goal, and deal projections.
- */
 export class UsageClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<UsageClient.Options>;
 
@@ -28,7 +25,7 @@ export class UsageClient {
     /**
      * Separates available and reserved balances. It does not expose provider billing identifiers.
      *
-     * @param {Darwin.GetAiUsageRequest} request
+     * @param {Darwin.GetAiUsageUsageRequest} request
      * @param {UsageClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -44,16 +41,16 @@ export class UsageClient {
      *     })
      */
     public getAiUsage(
-        request: Darwin.GetAiUsageRequest,
+        request: Darwin.GetAiUsageUsageRequest,
         requestOptions?: UsageClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetAiUsageResponse> {
+    ): core.HttpResponsePromise<Darwin.GetAiUsageUsageResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getAiUsage(request, requestOptions));
     }
 
     private async __getAiUsage(
-        request: Darwin.GetAiUsageRequest,
+        request: Darwin.GetAiUsageUsageRequest,
         requestOptions?: UsageClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetAiUsageResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetAiUsageUsageResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -78,7 +75,7 @@ export class UsageClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetAiUsageResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.GetAiUsageUsageResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {

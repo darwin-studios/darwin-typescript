@@ -1,1 +1,1 @@
-export type { GetAiReputationRequest } from "./GetAiReputationRequest.js";
+export type { GetAiReputationReputationRequest } from "./GetAiReputationReputationRequest.js";

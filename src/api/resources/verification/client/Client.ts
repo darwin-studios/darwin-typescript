@@ -15,9 +15,6 @@ export declare namespace VerificationClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Read verification readiness without provider identifiers or evidence.
- */
 export class VerificationClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<VerificationClient.Options>;
 
@@ -26,7 +23,7 @@ export class VerificationClient {
     }
 
     /**
-     * @param {Darwin.GetAiVerificationRequest} request
+     * @param {Darwin.GetAiVerificationVerificationRequest} request
      * @param {VerificationClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -42,16 +39,16 @@ export class VerificationClient {
      *     })
      */
     public getAiVerification(
-        request: Darwin.GetAiVerificationRequest,
+        request: Darwin.GetAiVerificationVerificationRequest,
         requestOptions?: VerificationClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetAiVerificationResponse> {
+    ): core.HttpResponsePromise<Darwin.GetAiVerificationVerificationResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getAiVerification(request, requestOptions));
     }
 
     private async __getAiVerification(
-        request: Darwin.GetAiVerificationRequest,
+        request: Darwin.GetAiVerificationVerificationRequest,
         requestOptions?: VerificationClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetAiVerificationResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetAiVerificationVerificationResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -76,7 +73,10 @@ export class VerificationClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetAiVerificationResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.GetAiVerificationVerificationResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {

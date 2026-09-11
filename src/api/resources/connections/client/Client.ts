@@ -16,9 +16,6 @@ export declare namespace ConnectionsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Manage authorized external accounts without exposing provider credentials.
- */
 export class ConnectionsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ConnectionsClient.Options>;
 
@@ -27,7 +24,7 @@ export class ConnectionsClient {
     }
 
     /**
-     * @param {Darwin.ListAiConnectionsRequest} request
+     * @param {Darwin.ListAiConnectionsConnectionsRequest} request
      * @param {ConnectionsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -43,16 +40,16 @@ export class ConnectionsClient {
      *     })
      */
     public listAiConnections(
-        request: Darwin.ListAiConnectionsRequest,
+        request: Darwin.ListAiConnectionsConnectionsRequest,
         requestOptions?: ConnectionsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListAiConnectionsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListAiConnectionsConnectionsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listAiConnections(request, requestOptions));
     }
 
     private async __listAiConnections(
-        request: Darwin.ListAiConnectionsRequest,
+        request: Darwin.ListAiConnectionsConnectionsRequest,
         requestOptions?: ConnectionsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListAiConnectionsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListAiConnectionsConnectionsResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -77,7 +74,10 @@ export class ConnectionsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListAiConnectionsResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.ListAiConnectionsConnectionsResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
@@ -100,6 +100,188 @@ export class ConnectionsClient {
         }
 
         return handleNonStatusCodeError(_response.error, _response.rawResponse, "GET", "/ais/{aiId}/connections");
+    }
+
+    /**
+     * Owner user credentials only. Assigns a sanitized provider authorization to one AI, Listing, or transaction without exposing credentials. Request-only assignments must expire within 24 hours; saved assignments require explicit consent.
+     *
+     * @param {Darwin.CreateConnectionAssignmentRequest} request
+     * @param {ConnectionsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Darwin.BadRequestError}
+     * @throws {@link Darwin.UnauthorizedError}
+     * @throws {@link Darwin.ForbiddenError}
+     * @throws {@link Darwin.NotFoundError}
+     * @throws {@link errors.DarwinError}
+     * @throws {@link errors.DarwinTimeoutError}
+     *
+     * @example
+     *     await client.connections.createConnectionAssignment({
+     *         aiId: "aiId",
+     *         connectionId: "connectionId",
+     *         targetKind: "AI",
+     *         targetId: "targetId",
+     *         retention: "REQUEST_ONLY",
+     *         scopes: ["scopes"]
+     *     })
+     */
+    public createConnectionAssignment(
+        request: Darwin.CreateConnectionAssignmentRequest,
+        requestOptions?: ConnectionsClient.RequestOptions,
+    ): core.HttpResponsePromise<Darwin.CreateConnectionAssignmentConnectionsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__createConnectionAssignment(request, requestOptions));
+    }
+
+    private async __createConnectionAssignment(
+        request: Darwin.CreateConnectionAssignmentRequest,
+        requestOptions?: ConnectionsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Darwin.CreateConnectionAssignmentConnectionsResponse>> {
+        const { aiId, connectionId, ..._body } = request;
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.DarwinEnvironment.Production,
+                `ais/${core.url.encodePathParam(aiId)}/connections/${core.url.encodePathParam(connectionId)}/assignments`,
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Darwin.CreateConnectionAssignmentConnectionsResponse,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Darwin.BadRequestError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 401:
+                    throw new Darwin.UnauthorizedError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 403:
+                    throw new Darwin.ForbiddenError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 404:
+                    throw new Darwin.NotFoundError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                default:
+                    throw new errors.DarwinError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/ais/{aiId}/connections/{connectionId}/assignments",
+        );
+    }
+
+    /**
+     * Owner user credentials only. Revocation takes effect before the next fulfillment check.
+     *
+     * @param {Darwin.RevokeConnectionAssignmentConnectionsRequest} request
+     * @param {ConnectionsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Darwin.BadRequestError}
+     * @throws {@link Darwin.UnauthorizedError}
+     * @throws {@link Darwin.ForbiddenError}
+     * @throws {@link Darwin.NotFoundError}
+     * @throws {@link errors.DarwinError}
+     * @throws {@link errors.DarwinTimeoutError}
+     *
+     * @example
+     *     await client.connections.revokeConnectionAssignment({
+     *         aiId: "aiId",
+     *         connectionId: "connectionId",
+     *         assignmentId: "assignmentId"
+     *     })
+     */
+    public revokeConnectionAssignment(
+        request: Darwin.RevokeConnectionAssignmentConnectionsRequest,
+        requestOptions?: ConnectionsClient.RequestOptions,
+    ): core.HttpResponsePromise<Darwin.RevokeConnectionAssignmentConnectionsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__revokeConnectionAssignment(request, requestOptions));
+    }
+
+    private async __revokeConnectionAssignment(
+        request: Darwin.RevokeConnectionAssignmentConnectionsRequest,
+        requestOptions?: ConnectionsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Darwin.RevokeConnectionAssignmentConnectionsResponse>> {
+        const { aiId, connectionId, assignmentId } = request;
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.DarwinEnvironment.Production,
+                `ais/${core.url.encodePathParam(aiId)}/connections/${core.url.encodePathParam(connectionId)}/assignments/${core.url.encodePathParam(assignmentId)}`,
+            ),
+            method: "DELETE",
+            headers: _headers,
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Darwin.RevokeConnectionAssignmentConnectionsResponse,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Darwin.BadRequestError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 401:
+                    throw new Darwin.UnauthorizedError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 403:
+                    throw new Darwin.ForbiddenError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 404:
+                    throw new Darwin.NotFoundError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                default:
+                    throw new errors.DarwinError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "DELETE",
+            "/ais/{aiId}/connections/{connectionId}/assignments/{assignmentId}",
+        );
     }
 
     /**
@@ -288,7 +470,7 @@ export class ConnectionsClient {
     /**
      * Owner credentials only. This disables Darwin access without claiming the provider revoked one scope from a cumulative token.
      *
-     * @param {Darwin.DisableConnectionGrantRequest} request
+     * @param {Darwin.DisableConnectionGrantConnectionsRequest} request
      * @param {ConnectionsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -306,14 +488,14 @@ export class ConnectionsClient {
      *     })
      */
     public disableConnectionGrant(
-        request: Darwin.DisableConnectionGrantRequest,
+        request: Darwin.DisableConnectionGrantConnectionsRequest,
         requestOptions?: ConnectionsClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.ConnectionGrantDisableResult> {
         return core.HttpResponsePromise.fromPromise(this.__disableConnectionGrant(request, requestOptions));
     }
 
     private async __disableConnectionGrant(
-        request: Darwin.DisableConnectionGrantRequest,
+        request: Darwin.DisableConnectionGrantConnectionsRequest,
         requestOptions?: ConnectionsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.ConnectionGrantDisableResult>> {
         const { aiId, connectionId, toolkit } = request;
@@ -373,7 +555,7 @@ export class ConnectionsClient {
     /**
      * Owner credentials only. Local access is disabled immediately and provider token revocation is retried if necessary.
      *
-     * @param {Darwin.RemoveAiConnectionRequest} request
+     * @param {Darwin.RemoveAiConnectionConnectionsRequest} request
      * @param {ConnectionsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -390,14 +572,14 @@ export class ConnectionsClient {
      *     })
      */
     public removeAiConnection(
-        request: Darwin.RemoveAiConnectionRequest,
+        request: Darwin.RemoveAiConnectionConnectionsRequest,
         requestOptions?: ConnectionsClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.ConnectionRemovalResult> {
         return core.HttpResponsePromise.fromPromise(this.__removeAiConnection(request, requestOptions));
     }
 
     private async __removeAiConnection(
-        request: Darwin.RemoveAiConnectionRequest,
+        request: Darwin.RemoveAiConnectionConnectionsRequest,
         requestOptions?: ConnectionsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.ConnectionRemovalResult>> {
         const { aiId, connectionId } = request;

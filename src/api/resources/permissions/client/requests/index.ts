@@ -1,1 +1,1 @@
-export type { GetAiPermissionsRequest } from "./GetAiPermissionsRequest.js";
+export type { GetAiPermissionsPermissionsRequest } from "./GetAiPermissionsPermissionsRequest.js";

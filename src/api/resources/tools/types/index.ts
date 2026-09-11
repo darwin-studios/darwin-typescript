@@ -1,1 +1,1 @@
-export * from "./ListToolsResponse.js";
+export * from "./ListToolsToolsResponse.js";

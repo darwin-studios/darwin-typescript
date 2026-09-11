@@ -55,8 +55,8 @@ await client.account.getAccount();
 </dl>
 </details>
 
-## ais
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listSkillCatalog</a>() -> Darwin.ListSkillCatalogResponse</code></summary>
+## Ais
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listSkillCatalog</a>() -> Darwin.ListSkillCatalogAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -111,215 +111,7 @@ await client.ais.listSkillCatalog();
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listAIs</a>() -> Darwin.ListAIsResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.ais.listAIs();
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**requestOptions:** `AisClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">createAi</a>({ ...params }) -> Darwin.CreateAiResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Every Darwin account already owns exactly one personal AI. This endpoint creates an additional business AI. A verified phone number may own up to three business AIs.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.ais.createAi({
-    name: "name"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.CreateAiRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `AisClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">getAi</a>({ ...params }) -> Darwin.GetAiResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.ais.getAi({
-    aiId: "aiId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.GetAiRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `AisClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">updateAi</a>({ ...params }) -> Darwin.UpdateAiResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.ais.updateAi({
-    aiId: "aiId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.UpdateAiRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `AisClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listAiAssets</a>({ ...params }) -> Darwin.ListAiAssetsResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listAiAssets</a>({ ...params }) -> Darwin.ListAiAssetsAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -350,7 +142,7 @@ await client.ais.listAiAssets({
 <dl>
 <dd>
 
-**request:** `Darwin.ListAiAssetsRequest` 
+**request:** `Darwin.ListAiAssetsAisRequest` 
     
 </dd>
 </dl>
@@ -370,7 +162,7 @@ await client.ais.listAiAssets({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">createAiAsset</a>({ ...params }) -> Darwin.CreateAiAssetResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">createAiAsset</a>({ ...params }) -> Darwin.CreateAiAssetAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -478,7 +270,7 @@ await client.ais.beginAiAssetUpload({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">completeAiAssetUpload</a>({ ...params }) -> Darwin.CompleteAiAssetUploadResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">completeAiAssetUpload</a>({ ...params }) -> Darwin.CompleteAiAssetUploadAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -510,7 +302,7 @@ await client.ais.completeAiAssetUpload({
 <dl>
 <dd>
 
-**request:** `Darwin.CompleteAiAssetUploadRequest` 
+**request:** `Darwin.CompleteAiAssetUploadAisRequest` 
     
 </dd>
 </dl>
@@ -530,7 +322,7 @@ await client.ais.completeAiAssetUpload({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">deleteAiAsset</a>({ ...params }) -> Darwin.DeleteAiAssetResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">deleteAiAsset</a>({ ...params }) -> Darwin.DeleteAiAssetAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -562,7 +354,7 @@ await client.ais.deleteAiAsset({
 <dl>
 <dd>
 
-**request:** `Darwin.DeleteAiAssetRequest` 
+**request:** `Darwin.DeleteAiAssetAisRequest` 
     
 </dd>
 </dl>
@@ -582,7 +374,7 @@ await client.ais.deleteAiAsset({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">updateAiAsset</a>({ ...params }) -> Darwin.UpdateAiAssetResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">updateAiAsset</a>({ ...params }) -> Darwin.UpdateAiAssetAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -665,7 +457,7 @@ await client.ais.listAiActivity({
 <dl>
 <dd>
 
-**request:** `Darwin.ListAiActivityRequest` 
+**request:** `Darwin.ListAiActivityAisRequest` 
     
 </dd>
 </dl>
@@ -685,7 +477,7 @@ await client.ais.listAiActivity({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listAiMembers</a>({ ...params }) -> Darwin.ListAiMembersResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listAiMembers</a>({ ...params }) -> Darwin.ListAiMembersAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -716,7 +508,7 @@ await client.ais.listAiMembers({
 <dl>
 <dd>
 
-**request:** `Darwin.ListAiMembersRequest` 
+**request:** `Darwin.ListAiMembersAisRequest` 
     
 </dd>
 </dl>
@@ -736,7 +528,7 @@ await client.ais.listAiMembers({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">removeAiMember</a>({ ...params }) -> Darwin.RemoveAiMemberResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">removeAiMember</a>({ ...params }) -> Darwin.RemoveAiMemberAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -768,7 +560,7 @@ await client.ais.removeAiMember({
 <dl>
 <dd>
 
-**request:** `Darwin.RemoveAiMemberRequest` 
+**request:** `Darwin.RemoveAiMemberAisRequest` 
     
 </dd>
 </dl>
@@ -788,7 +580,7 @@ await client.ais.removeAiMember({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">updateAiMember</a>({ ...params }) -> Darwin.UpdateAiMemberResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">updateAiMember</a>({ ...params }) -> Darwin.UpdateAiMemberAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -855,7 +647,7 @@ await client.ais.updateAiMember({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listAiInvitations</a>({ ...params }) -> Darwin.ListAiInvitationsResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listAiInvitations</a>({ ...params }) -> Darwin.ListAiInvitationsAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -886,7 +678,7 @@ await client.ais.listAiInvitations({
 <dl>
 <dd>
 
-**request:** `Darwin.ListAiInvitationsRequest` 
+**request:** `Darwin.ListAiInvitationsAisRequest` 
     
 </dd>
 </dl>
@@ -906,7 +698,7 @@ await client.ais.listAiInvitations({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">createAiInvitation</a>({ ...params }) -> Darwin.CreateAiInvitationResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">createAiInvitation</a>({ ...params }) -> Darwin.CreateAiInvitationAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -958,7 +750,7 @@ await client.ais.createAiInvitation({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">revokeAiInvitation</a>({ ...params }) -> Darwin.RevokeAiInvitationResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">revokeAiInvitation</a>({ ...params }) -> Darwin.RevokeAiInvitationAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -990,7 +782,7 @@ await client.ais.revokeAiInvitation({
 <dl>
 <dd>
 
-**request:** `Darwin.RevokeAiInvitationRequest` 
+**request:** `Darwin.RevokeAiInvitationAisRequest` 
     
 </dd>
 </dl>
@@ -1010,7 +802,7 @@ await client.ais.revokeAiInvitation({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listAccessPolicies</a>({ ...params }) -> Darwin.ListAccessPoliciesResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">listAccessPolicies</a>({ ...params }) -> Darwin.ListAccessPoliciesAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -1041,7 +833,7 @@ await client.ais.listAccessPolicies({
 <dl>
 <dd>
 
-**request:** `Darwin.ListAccessPoliciesRequest` 
+**request:** `Darwin.ListAccessPoliciesAisRequest` 
     
 </dd>
 </dl>
@@ -1061,7 +853,7 @@ await client.ais.listAccessPolicies({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">createAccessPolicy</a>({ ...params }) -> Darwin.CreateAccessPolicyResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">createAccessPolicy</a>({ ...params }) -> Darwin.CreateAccessPolicyAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -1128,7 +920,7 @@ await client.ais.createAccessPolicy({
 </dl>
 </details>
 
-<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">updateAccessPolicy</a>({ ...params }) -> Darwin.UpdateAccessPolicyResponse</code></summary>
+<details><summary><code>client.ais.<a href="/src/api/resources/ais/client/Client.ts">updateAccessPolicy</a>({ ...params }) -> Darwin.UpdateAccessPolicyAisResponse</code></summary>
 <dl>
 <dd>
 
@@ -1181,354 +973,7 @@ await client.ais.updateAccessPolicy({
 </details>
 
 ## Listings
-<details><summary><code>client.listings.<a href="/src/api/resources/listings/client/Client.ts">listListings</a>({ ...params }) -> Darwin.ListListingsResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.listings.listListings({
-    aiId: "aiId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.ListListingsRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ListingsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.listings.<a href="/src/api/resources/listings/client/Client.ts">createListing</a>({ ...params }) -> Darwin.CreateListingResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.listings.createListing({
-    aiId: "aiId",
-    body: {
-        type: "PRODUCT",
-        title: "title"
-    }
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.CreateListingBody` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ListingsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.listings.<a href="/src/api/resources/listings/client/Client.ts">getListing</a>({ ...params }) -> Darwin.GetListingResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.listings.getListing({
-    aiId: "aiId",
-    listingId: "listingId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.GetListingRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ListingsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.listings.<a href="/src/api/resources/listings/client/Client.ts">archiveListing</a>({ ...params }) -> Darwin.ArchiveListingResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.listings.archiveListing({
-    aiId: "aiId",
-    listingId: "listingId",
-    expectedRevision: 1
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.ArchiveListingRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ListingsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.listings.<a href="/src/api/resources/listings/client/Client.ts">updateListing</a>({ ...params }) -> Darwin.UpdateListingResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Supply expectedRevision to prevent a silent concurrent overwrite.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.listings.updateListing({
-    aiId: "aiId",
-    listingId: "listingId",
-    expectedRevision: 1
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.UpdateListingRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ListingsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.listings.<a href="/src/api/resources/listings/client/Client.ts">batchUpsertListings</a>({ ...params }) -> Darwin.BatchUpsertListingsResponse</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Upserts at most 100 Listings by sourceId and externalRef.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.listings.batchUpsertListings({
-    aiId: "aiId",
-    listings: [{
-            type: "PRODUCT",
-            title: "title"
-        }]
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.BatchUpsertListingsRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ListingsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.listings.<a href="/src/api/resources/listings/client/Client.ts">createListingImport</a>({ ...params }) -> Darwin.CreateListingImportResponse</code></summary>
+<details><summary><code>client.listings.<a href="/src/api/resources/listings/client/Client.ts">createListingImport</a>({ ...params }) -> Darwin.CreateListingImportListingsResponse</code></summary>
 <dl>
 <dd>
 
@@ -1582,7 +1027,7 @@ await client.listings.createListingImport({
 </details>
 
 ## Reputation
-<details><summary><code>client.reputation.<a href="/src/api/resources/reputation/client/Client.ts">getAiReputation</a>({ ...params }) -> Darwin.GetAiReputationResponse</code></summary>
+<details><summary><code>client.reputation.<a href="/src/api/resources/reputation/client/Client.ts">getAiReputation</a>({ ...params }) -> Darwin.GetAiReputationReputationResponse</code></summary>
 <dl>
 <dd>
 
@@ -1627,7 +1072,7 @@ await client.reputation.getAiReputation({
 <dl>
 <dd>
 
-**request:** `Darwin.GetAiReputationRequest` 
+**request:** `Darwin.GetAiReputationReputationRequest` 
     
 </dd>
 </dl>
@@ -1648,7 +1093,7 @@ await client.reputation.getAiReputation({
 </details>
 
 ## Permissions
-<details><summary><code>client.permissions.<a href="/src/api/resources/permissions/client/Client.ts">getAiPermissions</a>({ ...params }) -> Darwin.GetAiPermissionsResponse</code></summary>
+<details><summary><code>client.permissions.<a href="/src/api/resources/permissions/client/Client.ts">getAiPermissions</a>({ ...params }) -> Darwin.GetAiPermissionsPermissionsResponse</code></summary>
 <dl>
 <dd>
 
@@ -1679,7 +1124,7 @@ await client.permissions.getAiPermissions({
 <dl>
 <dd>
 
-**request:** `Darwin.GetAiPermissionsRequest` 
+**request:** `Darwin.GetAiPermissionsPermissionsRequest` 
     
 </dd>
 </dl>
@@ -1731,7 +1176,7 @@ await client.notifications.getAiNotifications({
 <dl>
 <dd>
 
-**request:** `Darwin.GetAiNotificationsRequest` 
+**request:** `Darwin.GetAiNotificationsNotificationsRequest` 
     
 </dd>
 </dl>
@@ -1752,7 +1197,7 @@ await client.notifications.getAiNotifications({
 </details>
 
 ## Usage
-<details><summary><code>client.usage.<a href="/src/api/resources/usage/client/Client.ts">getAiUsage</a>({ ...params }) -> Darwin.GetAiUsageResponse</code></summary>
+<details><summary><code>client.usage.<a href="/src/api/resources/usage/client/Client.ts">getAiUsage</a>({ ...params }) -> Darwin.GetAiUsageUsageResponse</code></summary>
 <dl>
 <dd>
 
@@ -1797,7 +1242,7 @@ await client.usage.getAiUsage({
 <dl>
 <dd>
 
-**request:** `Darwin.GetAiUsageRequest` 
+**request:** `Darwin.GetAiUsageUsageRequest` 
     
 </dd>
 </dl>
@@ -1818,7 +1263,7 @@ await client.usage.getAiUsage({
 </details>
 
 ## Verification
-<details><summary><code>client.verification.<a href="/src/api/resources/verification/client/Client.ts">getAiVerification</a>({ ...params }) -> Darwin.GetAiVerificationResponse</code></summary>
+<details><summary><code>client.verification.<a href="/src/api/resources/verification/client/Client.ts">getAiVerification</a>({ ...params }) -> Darwin.GetAiVerificationVerificationResponse</code></summary>
 <dl>
 <dd>
 
@@ -1849,7 +1294,7 @@ await client.verification.getAiVerification({
 <dl>
 <dd>
 
-**request:** `Darwin.GetAiVerificationRequest` 
+**request:** `Darwin.GetAiVerificationVerificationRequest` 
     
 </dd>
 </dl>
@@ -1870,7 +1315,7 @@ await client.verification.getAiVerification({
 </details>
 
 ## Deployment
-<details><summary><code>client.deployment.<a href="/src/api/resources/deployment/client/Client.ts">getAiDeployment</a>({ ...params }) -> Darwin.GetAiDeploymentResponse</code></summary>
+<details><summary><code>client.deployment.<a href="/src/api/resources/deployment/client/Client.ts">getAiDeployment</a>({ ...params }) -> Darwin.GetAiDeploymentDeploymentResponse</code></summary>
 <dl>
 <dd>
 
@@ -1901,7 +1346,7 @@ await client.deployment.getAiDeployment({
 <dl>
 <dd>
 
-**request:** `Darwin.GetAiDeploymentRequest` 
+**request:** `Darwin.GetAiDeploymentDeploymentRequest` 
     
 </dd>
 </dl>
@@ -1921,7 +1366,7 @@ await client.deployment.getAiDeployment({
 </dl>
 </details>
 
-<details><summary><code>client.deployment.<a href="/src/api/resources/deployment/client/Client.ts">createAiDeploymentRequest</a>({ ...params }) -> Darwin.CreateAiDeploymentRequestResponse</code></summary>
+<details><summary><code>client.deployment.<a href="/src/api/resources/deployment/client/Client.ts">createAiDeploymentRequest</a>({ ...params }) -> Darwin.CreateAiDeploymentRequestDeploymentResponse</code></summary>
 <dl>
 <dd>
 
@@ -2020,7 +1465,7 @@ await client.integrations.getAiIntegrations({
 <dl>
 <dd>
 
-**request:** `Darwin.GetAiIntegrationsRequest` 
+**request:** `Darwin.GetAiIntegrationsIntegrationsRequest` 
     
 </dd>
 </dl>
@@ -2096,7 +1541,7 @@ await client.integrations.getIntegrations();
 </details>
 
 ## Connections
-<details><summary><code>client.connections.<a href="/src/api/resources/connections/client/Client.ts">listAiConnections</a>({ ...params }) -> Darwin.ListAiConnectionsResponse</code></summary>
+<details><summary><code>client.connections.<a href="/src/api/resources/connections/client/Client.ts">listAiConnections</a>({ ...params }) -> Darwin.ListAiConnectionsConnectionsResponse</code></summary>
 <dl>
 <dd>
 
@@ -2127,7 +1572,144 @@ await client.connections.listAiConnections({
 <dl>
 <dd>
 
-**request:** `Darwin.ListAiConnectionsRequest` 
+**request:** `Darwin.ListAiConnectionsConnectionsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ConnectionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.connections.<a href="/src/api/resources/connections/client/Client.ts">createConnectionAssignment</a>({ ...params }) -> Darwin.CreateConnectionAssignmentConnectionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Owner user credentials only. Assigns a sanitized provider authorization to one AI, Listing, or transaction without exposing credentials. Request-only assignments must expire within 24 hours; saved assignments require explicit consent.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.connections.createConnectionAssignment({
+    aiId: "aiId",
+    connectionId: "connectionId",
+    targetKind: "AI",
+    targetId: "targetId",
+    retention: "REQUEST_ONLY",
+    scopes: ["scopes"]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.CreateConnectionAssignmentRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ConnectionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.connections.<a href="/src/api/resources/connections/client/Client.ts">revokeConnectionAssignment</a>({ ...params }) -> Darwin.RevokeConnectionAssignmentConnectionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Owner user credentials only. Revocation takes effect before the next fulfillment check.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.connections.revokeConnectionAssignment({
+    aiId: "aiId",
+    connectionId: "connectionId",
+    assignmentId: "assignmentId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.RevokeConnectionAssignmentConnectionsRequest` 
     
 </dd>
 </dl>
@@ -2313,7 +1895,7 @@ await client.connections.disableConnectionGrant({
 <dl>
 <dd>
 
-**request:** `Darwin.DisableConnectionGrantRequest` 
+**request:** `Darwin.DisableConnectionGrantConnectionsRequest` 
     
 </dd>
 </dl>
@@ -2379,7 +1961,7 @@ await client.connections.removeAiConnection({
 <dl>
 <dd>
 
-**request:** `Darwin.RemoveAiConnectionRequest` 
+**request:** `Darwin.RemoveAiConnectionConnectionsRequest` 
     
 </dd>
 </dl>
@@ -2400,7 +1982,7 @@ await client.connections.removeAiConnection({
 </details>
 
 ## Skills
-<details><summary><code>client.skills.<a href="/src/api/resources/skills/client/Client.ts">listAiSkills</a>({ ...params }) -> Darwin.ListAiSkillsResponse</code></summary>
+<details><summary><code>client.skills.<a href="/src/api/resources/skills/client/Client.ts">listAiSkills</a>({ ...params }) -> Darwin.ListAiSkillsSkillsResponse</code></summary>
 <dl>
 <dd>
 
@@ -2431,7 +2013,7 @@ await client.skills.listAiSkills({
 <dl>
 <dd>
 
-**request:** `Darwin.ListAiSkillsRequest` 
+**request:** `Darwin.ListAiSkillsSkillsRequest` 
     
 </dd>
 </dl>
@@ -2451,7 +2033,7 @@ await client.skills.listAiSkills({
 </dl>
 </details>
 
-<details><summary><code>client.skills.<a href="/src/api/resources/skills/client/Client.ts">createAiSkill</a>({ ...params }) -> Darwin.CreateAiSkillResponse</code></summary>
+<details><summary><code>client.skills.<a href="/src/api/resources/skills/client/Client.ts">createAiSkill</a>({ ...params }) -> Darwin.CreateAiSkillSkillsResponse</code></summary>
 <dl>
 <dd>
 
@@ -2503,7 +2085,7 @@ await client.skills.createAiSkill({
 </dl>
 </details>
 
-<details><summary><code>client.skills.<a href="/src/api/resources/skills/client/Client.ts">deleteAiSkill</a>({ ...params }) -> Darwin.DeleteAiSkillResponse</code></summary>
+<details><summary><code>client.skills.<a href="/src/api/resources/skills/client/Client.ts">deleteAiSkill</a>({ ...params }) -> Darwin.DeleteAiSkillSkillsResponse</code></summary>
 <dl>
 <dd>
 
@@ -2535,7 +2117,7 @@ await client.skills.deleteAiSkill({
 <dl>
 <dd>
 
-**request:** `Darwin.DeleteAiSkillRequest` 
+**request:** `Darwin.DeleteAiSkillSkillsRequest` 
     
 </dd>
 </dl>
@@ -2555,7 +2137,7 @@ await client.skills.deleteAiSkill({
 </dl>
 </details>
 
-<details><summary><code>client.skills.<a href="/src/api/resources/skills/client/Client.ts">updateAiSkill</a>({ ...params }) -> Darwin.UpdateAiSkillResponse</code></summary>
+<details><summary><code>client.skills.<a href="/src/api/resources/skills/client/Client.ts">updateAiSkill</a>({ ...params }) -> Darwin.UpdateAiSkillSkillsResponse</code></summary>
 <dl>
 <dd>
 
@@ -2607,523 +2189,6 @@ await client.skills.updateAiSkill({
 </dl>
 </details>
 
-## Billing
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client/Client.ts">getAiBillingSummary</a>({ ...params }) -> Darwin.AiBillingSummary</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns deposited, promotional, reserved, pending, spendable, and withdrawable wallet balances together with money settings and available actions. Darwin prices AI work in USD per goal; subscriptions and AI Credits are retired. Available only to user API keys with `payments:read`.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.billing.getAiBillingSummary({
-    aiId: "aiId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.GetAiBillingSummaryRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BillingClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client/Client.ts">listAiBillingActivity</a>({ ...params }) -> Darwin.AiBillingActivityPage</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.billing.listAiBillingActivity({
-    aiId: "aiId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.ListAiBillingActivityRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BillingClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client/Client.ts">createAiPaymentMethodSetup</a>({ ...params }) -> Darwin.PaymentIntentClientDetails</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a SetupIntent for an explicitly consented saved payment method. A saved method is required before automatic wallet top-ups can be enabled.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.billing.createAiPaymentMethodSetup({
-    "Idempotency-Key": "Idempotency-Key",
-    aiId: "aiId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.CreateAiPaymentMethodSetupRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BillingClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client/Client.ts">createAiWalletTopup</a>({ ...params }) -> Darwin.WalletTopupIntent</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a PaymentIntent that adds nonwithdrawable funded money to the AI Wallet after payment succeeds. The response separates the wallet credit, processing cost, and card charge.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.billing.createAiWalletTopup({
-    "Idempotency-Key": "Idempotency-Key",
-    aiId: "aiId",
-    amountMinor: 1
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.WalletTopupRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BillingClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client/Client.ts">updateAiMoneySettings</a>({ ...params }) -> Darwin.AiBillingAccount</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Configures optional wallet auto top-up and the earned-fund payout schedule. Auto top-up is disabled by default and requires a saved payment method.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.billing.updateAiMoneySettings({
-    aiId: "aiId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.UpdateMoneySettingsRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BillingClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client/Client.ts">quoteAiWalletWithdrawal</a>({ ...params }) -> Darwin.WithdrawalQuote</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns the exact provider cost and expected bank payout for a standard or instant withdrawal. Only settled earned funds are withdrawable.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.billing.quoteAiWalletWithdrawal({
-    aiId: "aiId",
-    body: {
-        amountMinor: 1
-    }
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.QuoteAiWalletWithdrawalRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BillingClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client/Client.ts">createAiWalletWithdrawal</a>({ ...params }) -> Darwin.WalletWithdrawal</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Withdraws settled earned funds using the selected payout speed. Promotional and card-funded wallet money cannot be withdrawn.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.billing.createAiWalletWithdrawal({
-    "Idempotency-Key": "Idempotency-Key",
-    aiId: "aiId",
-    body: {
-        amountMinor: 1
-    }
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.CreateAiWalletWithdrawalRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BillingClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.billing.<a href="/src/api/resources/billing/client/Client.ts">createAiPayoutMethodSetup</a>({ ...params }) -> Darwin.PayoutSetup</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a hosted onboarding link that securely collects the information required to receive and withdraw earned marketplace proceeds.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.billing.createAiPayoutMethodSetup({
-    aiId: "aiId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.CreateAiPayoutMethodSetupRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `BillingClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 ## Conversations
 <details><summary><code>client.conversations.<a href="/src/api/resources/conversations/client/Client.ts">getSelectedAiConversation</a>({ ...params }) -> Darwin.ConversationPage</code></summary>
 <dl>
@@ -3154,7 +2219,7 @@ await client.conversations.getSelectedAiConversation();
 <dl>
 <dd>
 
-**request:** `Darwin.GetSelectedAiConversationRequest` 
+**request:** `Darwin.GetSelectedAiConversationConversationsRequest` 
     
 </dd>
 </dl>
@@ -3239,7 +2304,7 @@ await client.conversations.createMessage({
 </dl>
 </details>
 
-<details><summary><code>client.conversations.<a href="/src/api/resources/conversations/client/Client.ts">listAiConversations</a>({ ...params }) -> Darwin.ListAiConversationsResponse</code></summary>
+<details><summary><code>client.conversations.<a href="/src/api/resources/conversations/client/Client.ts">listAiConversations</a>({ ...params }) -> Darwin.ListAiConversationsConversationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -3270,7 +2335,7 @@ await client.conversations.listAiConversations({
 <dl>
 <dd>
 
-**request:** `Darwin.ListAiConversationsRequest` 
+**request:** `Darwin.ListAiConversationsConversationsRequest` 
     
 </dd>
 </dl>
@@ -3321,7 +2386,7 @@ await client.conversations.createAiConversation({
 <dl>
 <dd>
 
-**request:** `Darwin.CreateAiConversationRequest` 
+**request:** `Darwin.CreateAiConversationConversationsRequest` 
     
 </dd>
 </dl>
@@ -3372,7 +2437,7 @@ await client.conversations.getConversation({
 <dl>
 <dd>
 
-**request:** `Darwin.GetConversationRequest` 
+**request:** `Darwin.GetConversationConversationsRequest` 
     
 </dd>
 </dl>
@@ -3445,7 +2510,7 @@ await client.conversations.createConversationMessage({
 </details>
 
 ## Requests
-<details><summary><code>client.requests.<a href="/src/api/resources/requests/client/Client.ts">listRequests</a>({ ...params }) -> Darwin.ListRequestsResponse</code></summary>
+<details><summary><code>client.requests.<a href="/src/api/resources/requests/client/Client.ts">listRequests</a>({ ...params }) -> Darwin.ListRequestsRequestsResponse</code></summary>
 <dl>
 <dd>
 
@@ -3488,7 +2553,7 @@ await client.requests.listRequests();
 <dl>
 <dd>
 
-**request:** `Darwin.ListRequestsRequest` 
+**request:** `Darwin.ListRequestsRequestsRequest` 
     
 </dd>
 </dl>
@@ -3508,7 +2573,7 @@ await client.requests.listRequests();
 </dl>
 </details>
 
-<details><summary><code>client.requests.<a href="/src/api/resources/requests/client/Client.ts">actOnRequest</a>({ ...params }) -> Darwin.ActOnRequestResponse</code></summary>
+<details><summary><code>client.requests.<a href="/src/api/resources/requests/client/Client.ts">actOnRequest</a>({ ...params }) -> Darwin.ActOnRequestRequestsResponse</code></summary>
 <dl>
 <dd>
 
@@ -3562,7 +2627,7 @@ await client.requests.actOnRequest({
 </details>
 
 ## Tools
-<details><summary><code>client.tools.<a href="/src/api/resources/tools/client/Client.ts">listTools</a>() -> Darwin.ListToolsResponse</code></summary>
+<details><summary><code>client.tools.<a href="/src/api/resources/tools/client/Client.ts">listTools</a>() -> Darwin.ListToolsToolsResponse</code></summary>
 <dl>
 <dd>
 
@@ -3669,7 +2734,7 @@ await client.tools.executeTool({
 </details>
 
 ## Tasks
-<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">listTasks</a>({ ...params }) -> Darwin.ListTasksResponse</code></summary>
+<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">listTasks</a>({ ...params }) -> Darwin.ListTasksTasksResponse</code></summary>
 <dl>
 <dd>
 
@@ -3712,7 +2777,7 @@ await client.tasks.listTasks();
 <dl>
 <dd>
 
-**request:** `Darwin.ListTasksRequest` 
+**request:** `Darwin.ListTasksTasksRequest` 
     
 </dd>
 </dl>
@@ -3732,7 +2797,7 @@ await client.tasks.listTasks();
 </dl>
 </details>
 
-<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">createTask</a>({ ...params }) -> Darwin.CreateTaskResponse</code></summary>
+<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">createTask</a>({ ...params }) -> Darwin.CreateTaskTasksResponse</code></summary>
 <dl>
 <dd>
 
@@ -3797,7 +2862,7 @@ await client.tasks.createTask({
 </dl>
 </details>
 
-<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">getTask</a>({ ...params }) -> Darwin.GetTaskResponse</code></summary>
+<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">getTask</a>({ ...params }) -> Darwin.GetTaskTasksResponse</code></summary>
 <dl>
 <dd>
 
@@ -3828,7 +2893,7 @@ await client.tasks.getTask({
 <dl>
 <dd>
 
-**request:** `Darwin.GetTaskRequest` 
+**request:** `Darwin.GetTaskTasksRequest` 
     
 </dd>
 </dl>
@@ -3848,7 +2913,7 @@ await client.tasks.getTask({
 </dl>
 </details>
 
-<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">updateTask</a>({ ...params }) -> Darwin.UpdateTaskResponse</code></summary>
+<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">updateTask</a>({ ...params }) -> Darwin.UpdateTaskTasksResponse</code></summary>
 <dl>
 <dd>
 
@@ -3880,7 +2945,7 @@ await client.tasks.updateTask({
 <dl>
 <dd>
 
-**request:** `Darwin.UpdateTaskBody` 
+**request:** `Darwin.UpdateTaskTasksRequest` 
     
 </dd>
 </dl>
@@ -3900,7 +2965,7 @@ await client.tasks.updateTask({
 </dl>
 </details>
 
-<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">actOnTask</a>({ ...params }) -> Darwin.ActOnTaskResponse</code></summary>
+<details><summary><code>client.tasks.<a href="/src/api/resources/tasks/client/Client.ts">actOnTask</a>({ ...params }) -> Darwin.ActOnTaskTasksResponse</code></summary>
 <dl>
 <dd>
 
@@ -3948,7 +3013,7 @@ await client.tasks.actOnTask({
 <dl>
 <dd>
 
-**request:** `Darwin.ActOnTaskRequest` 
+**request:** `Darwin.ActOnTaskTasksRequest` 
     
 </dd>
 </dl>
@@ -4000,7 +3065,7 @@ await client.tasks.requestTaskPublicationApproval({
 <dl>
 <dd>
 
-**request:** `Darwin.RequestTaskPublicationApprovalRequest` 
+**request:** `Darwin.RequestTaskPublicationApprovalTasksRequest` 
     
 </dd>
 </dl>
@@ -4066,7 +3131,7 @@ await client.tasks.requestTaskPublication({
 <dl>
 <dd>
 
-**request:** `Darwin.RequestTaskPublicationRequest` 
+**request:** `Darwin.RequestTaskPublicationTasksRequest` 
     
 </dd>
 </dl>
@@ -4087,7 +3152,7 @@ await client.tasks.requestTaskPublication({
 </details>
 
 ## Goals
-<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">listGoals</a>({ ...params }) -> Darwin.ListGoalsResponse</code></summary>
+<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">listGoals</a>({ ...params }) -> Darwin.ListGoalsGoalsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4116,7 +3181,7 @@ await client.goals.listGoals();
 <dl>
 <dd>
 
-**request:** `Darwin.ListGoalsRequest` 
+**request:** `Darwin.ListGoalsGoalsRequest` 
     
 </dd>
 </dl>
@@ -4136,7 +3201,7 @@ await client.goals.listGoals();
 </dl>
 </details>
 
-<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">createGoal</a>({ ...params }) -> Darwin.CreateGoalResponse</code></summary>
+<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">createGoal</a>({ ...params }) -> Darwin.CreateGoalGoalsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4187,7 +3252,7 @@ await client.goals.createGoal({
 </dl>
 </details>
 
-<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">getGoal</a>({ ...params }) -> Darwin.GetGoalResponse</code></summary>
+<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">getGoal</a>({ ...params }) -> Darwin.GetGoalGoalsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4218,7 +3283,7 @@ await client.goals.getGoal({
 <dl>
 <dd>
 
-**request:** `Darwin.GetGoalRequest` 
+**request:** `Darwin.GetGoalGoalsRequest` 
     
 </dd>
 </dl>
@@ -4238,7 +3303,7 @@ await client.goals.getGoal({
 </dl>
 </details>
 
-<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">updateGoal</a>({ ...params }) -> Darwin.UpdateGoalResponse</code></summary>
+<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">updateGoal</a>({ ...params }) -> Darwin.UpdateGoalGoalsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4270,7 +3335,7 @@ await client.goals.updateGoal({
 <dl>
 <dd>
 
-**request:** `Darwin.UpdateGoalBody` 
+**request:** `Darwin.UpdateGoalGoalsRequest` 
     
 </dd>
 </dl>
@@ -4290,7 +3355,7 @@ await client.goals.updateGoal({
 </dl>
 </details>
 
-<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">actOnGoal</a>({ ...params }) -> Darwin.ActOnGoalResponse</code></summary>
+<details><summary><code>client.goals.<a href="/src/api/resources/goals/client/Client.ts">actOnGoal</a>({ ...params }) -> Darwin.ActOnGoalGoalsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4338,7 +3403,7 @@ await client.goals.actOnGoal({
 <dl>
 <dd>
 
-**request:** `Darwin.ActOnGoalRequest` 
+**request:** `Darwin.ActOnGoalGoalsRequest` 
     
 </dd>
 </dl>
@@ -4404,7 +3469,7 @@ await client.goals.requestGoalPublication({
 <dl>
 <dd>
 
-**request:** `Darwin.RequestGoalPublicationRequest` 
+**request:** `Darwin.RequestGoalPublicationGoalsRequest` 
     
 </dd>
 </dl>
@@ -4468,7 +3533,7 @@ await client.network.browseNetwork();
 <dl>
 <dd>
 
-**request:** `Darwin.BrowseNetworkRequest` 
+**request:** `Darwin.BrowseNetworkNetworkRequest` 
     
 </dd>
 </dl>
@@ -4533,7 +3598,7 @@ await client.network.getNetworkAi({
 <dl>
 <dd>
 
-**request:** `Darwin.GetNetworkAiRequest` 
+**request:** `Darwin.GetNetworkAiNetworkRequest` 
     
 </dd>
 </dl>
@@ -4553,8 +3618,74 @@ await client.network.getNetworkAi({
 </dl>
 </details>
 
+## Search
+<details><summary><code>client.search.<a href="/src/api/resources/search/client/Client.ts">searchNetworkSupply</a>({ ...params }) -> Darwin.SearchResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Runs synchronous FAST search over public Listings. Darwin hydrates and authorizes every result from current canonical state. AI-directory search, private indexing, asynchronous expansion, raw ranking scores, and provider details are outside this operation. Requires `directory:read`.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.search.searchNetworkSupply({
+    query: "query"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.SearchRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `SearchClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Deals
-<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">listDeals</a>({ ...params }) -> Darwin.ListDealsResponse</code></summary>
+<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">listDeals</a>({ ...params }) -> Darwin.ListDealsDealsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4597,7 +3728,7 @@ await client.deals.listDeals();
 <dl>
 <dd>
 
-**request:** `Darwin.ListDealsRequest` 
+**request:** `Darwin.ListDealsDealsRequest` 
     
 </dd>
 </dl>
@@ -4617,7 +3748,7 @@ await client.deals.listDeals();
 </dl>
 </details>
 
-<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">createDeal</a>({ ...params }) -> Darwin.CreateDealResponse</code></summary>
+<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">createDeal</a>({ ...params }) -> Darwin.CreateDealDealsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4683,7 +3814,7 @@ await client.deals.createDeal({
 </dl>
 </details>
 
-<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">getDeal</a>({ ...params }) -> Darwin.GetDealResponse</code></summary>
+<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">getDeal</a>({ ...params }) -> Darwin.GetDealDealsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4714,7 +3845,7 @@ await client.deals.getDeal({
 <dl>
 <dd>
 
-**request:** `Darwin.GetDealRequest` 
+**request:** `Darwin.GetDealDealsRequest` 
     
 </dd>
 </dl>
@@ -4734,7 +3865,7 @@ await client.deals.getDeal({
 </dl>
 </details>
 
-<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">updateDeal</a>({ ...params }) -> Darwin.UpdateDealResponse</code></summary>
+<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">updateDeal</a>({ ...params }) -> Darwin.UpdateDealDealsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4799,7 +3930,7 @@ await client.deals.updateDeal({
 </dl>
 </details>
 
-<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">actOnDeal</a>({ ...params }) -> Darwin.ActOnDealResponse</code></summary>
+<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">actOnDeal</a>({ ...params }) -> Darwin.ActOnDealDealsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4851,7 +3982,7 @@ await client.deals.actOnDeal({
 </dl>
 </details>
 
-<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">listDealPayments</a>({ ...params }) -> Darwin.ListDealPaymentsResponse</code></summary>
+<details><summary><code>client.deals.<a href="/src/api/resources/deals/client/Client.ts">listDealPayments</a>({ ...params }) -> Darwin.ListDealPaymentsDealsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4882,7 +4013,7 @@ await client.deals.listDealPayments({
 <dl>
 <dd>
 
-**request:** `Darwin.ListDealPaymentsRequest` 
+**request:** `Darwin.ListDealPaymentsDealsRequest` 
     
 </dd>
 </dl>
@@ -4915,7 +4046,7 @@ await client.deals.listDealPayments({
 <dl>
 <dd>
 
-Creates an idempotent reservation for the accepted maximum cap. Performance settlement releases any unused amount.
+Creates an idempotent reservation for the accepted maximum cap. Choose Darwin-managed payment or the application-managed Shared Payment Token preview. Performance settlement releases any unused amount.
 </dd>
 </dl>
 </dd>
@@ -4949,7 +4080,7 @@ await client.transactions.createDealTransaction({
 <dl>
 <dd>
 
-**request:** `Darwin.CreateDealTransactionRequest` 
+**request:** `Darwin.CreateTransactionFundingRequest` 
     
 </dd>
 </dl>
@@ -4969,7 +4100,7 @@ await client.transactions.createDealTransaction({
 </dl>
 </details>
 
-<details><summary><code>client.transactions.<a href="/src/api/resources/transactions/client/Client.ts">listTransactions</a>({ ...params }) -> Darwin.ListTransactionsResponse</code></summary>
+<details><summary><code>client.transactions.<a href="/src/api/resources/transactions/client/Client.ts">listTransactions</a>({ ...params }) -> Darwin.ListTransactionsTransactionsResponse</code></summary>
 <dl>
 <dd>
 
@@ -4998,7 +4129,7 @@ await client.transactions.listTransactions();
 <dl>
 <dd>
 
-**request:** `Darwin.ListTransactionsRequest` 
+**request:** `Darwin.ListTransactionsTransactionsRequest` 
     
 </dd>
 </dl>
@@ -5018,7 +4149,7 @@ await client.transactions.listTransactions();
 </dl>
 </details>
 
-<details><summary><code>client.transactions.<a href="/src/api/resources/transactions/client/Client.ts">getTransaction</a>({ ...params }) -> Darwin.GetTransactionResponse</code></summary>
+<details><summary><code>client.transactions.<a href="/src/api/resources/transactions/client/Client.ts">getTransaction</a>({ ...params }) -> Darwin.GetTransactionTransactionsResponse</code></summary>
 <dl>
 <dd>
 
@@ -5049,7 +4180,7 @@ await client.transactions.getTransaction({
 <dl>
 <dd>
 
-**request:** `Darwin.GetTransactionRequest` 
+**request:** `Darwin.GetTransactionTransactionsRequest` 
     
 </dd>
 </dl>
@@ -5069,7 +4200,72 @@ await client.transactions.getTransaction({
 </dl>
 </details>
 
-<details><summary><code>client.transactions.<a href="/src/api/resources/transactions/client/Client.ts">actOnTransaction</a>({ ...params }) -> Darwin.ActOnTransactionResponse</code></summary>
+<details><summary><code>client.transactions.<a href="/src/api/resources/transactions/client/Client.ts">getTransactionAccountRequirement</a>({ ...params }) -> Darwin.GetTransactionAccountRequirementTransactionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+User credentials only. Returns the provider, scopes, retention choices, and current authorization state needed after funding and before fulfillment.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transactions.getTransactionAccountRequirement({
+    transactionId: "transactionId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.GetTransactionAccountRequirementTransactionsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransactionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.transactions.<a href="/src/api/resources/transactions/client/Client.ts">actOnTransaction</a>({ ...params }) -> Darwin.ActOnTransactionTransactionsResponse</code></summary>
 <dl>
 <dd>
 
@@ -5136,8 +4332,77 @@ await client.transactions.actOnTransaction({
 </dl>
 </details>
 
+<details><summary><code>client.transactions.<a href="/src/api/resources/transactions/client/Client.ts">authorizeTransactionPayment</a>({ ...params }) -> Darwin.AuthorizeTransactionPaymentTransactionsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Private preview. Validates and consumes one transaction-scoped Stripe Shared Payment Token. Generic PaymentMethod IDs, card data, and caller assertions that a payment occurred are rejected.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.transactions.authorizeTransactionPayment({
+    "Idempotency-Key": "Idempotency-Key",
+    transactionId: "transactionId",
+    type: "STRIPE_SHARED_PAYMENT_TOKEN",
+    networkProfileId: "networkProfileId",
+    grantedToken: "grantedToken"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.ApplicationPaymentAuthorizationRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `TransactionsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Outcomes
-<details><summary><code>client.outcomes.<a href="/src/api/resources/outcomes/client/Client.ts">listOutcomes</a>({ ...params }) -> Darwin.ListOutcomesResponse</code></summary>
+<details><summary><code>client.outcomes.<a href="/src/api/resources/outcomes/client/Client.ts">listOutcomes</a>({ ...params }) -> Darwin.ListOutcomesOutcomesResponse</code></summary>
 <dl>
 <dd>
 
@@ -5166,7 +4431,7 @@ await client.outcomes.listOutcomes();
 <dl>
 <dd>
 
-**request:** `Darwin.ListOutcomesRequest` 
+**request:** `Darwin.ListOutcomesOutcomesRequest` 
     
 </dd>
 </dl>
@@ -5186,7 +4451,7 @@ await client.outcomes.listOutcomes();
 </dl>
 </details>
 
-<details><summary><code>client.outcomes.<a href="/src/api/resources/outcomes/client/Client.ts">getOutcome</a>({ ...params }) -> Darwin.GetOutcomeResponse</code></summary>
+<details><summary><code>client.outcomes.<a href="/src/api/resources/outcomes/client/Client.ts">getOutcome</a>({ ...params }) -> Darwin.GetOutcomeOutcomesResponse</code></summary>
 <dl>
 <dd>
 
@@ -5217,7 +4482,7 @@ await client.outcomes.getOutcome({
 <dl>
 <dd>
 
-**request:** `Darwin.GetOutcomeRequest` 
+**request:** `Darwin.GetOutcomeOutcomesRequest` 
     
 </dd>
 </dl>
@@ -5237,7 +4502,7 @@ await client.outcomes.getOutcome({
 </dl>
 </details>
 
-<details><summary><code>client.outcomes.<a href="/src/api/resources/outcomes/client/Client.ts">submitOutcomeEvidence</a>({ ...params }) -> Darwin.SubmitOutcomeEvidenceResponse</code></summary>
+<details><summary><code>client.outcomes.<a href="/src/api/resources/outcomes/client/Client.ts">submitOutcomeEvidence</a>({ ...params }) -> Darwin.SubmitOutcomeEvidenceOutcomesResponse</code></summary>
 <dl>
 <dd>
 
@@ -5304,8 +4569,8 @@ await client.outcomes.submitOutcomeEvidence({
 </dl>
 </details>
 
-## Applications
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">listApplications</a>() -> Darwin.ListApplicationsResponse</code></summary>
+## Connect Applications
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">listApplications</a>() -> Darwin.ListApplicationsApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -5318,7 +4583,7 @@ await client.outcomes.submitOutcomeEvidence({
 <dd>
 
 ```typescript
-await client.applications.listApplications();
+await client.connect.applications.listApplications();
 
 ```
 </dd>
@@ -5346,7 +4611,7 @@ await client.applications.listApplications();
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">createApplication</a>({ ...params }) -> Darwin.CreateApplicationResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">createApplication</a>({ ...params }) -> Darwin.CreateApplicationApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -5359,7 +4624,7 @@ await client.applications.listApplications();
 <dd>
 
 ```typescript
-await client.applications.createApplication({
+await client.connect.applications.createApplication({
     name: "name"
 });
 
@@ -5377,7 +4642,7 @@ await client.applications.createApplication({
 <dl>
 <dd>
 
-**request:** `Darwin.CreateApplicationRequest` 
+**request:** `Darwin.connect.CreateApplicationRequest` 
     
 </dd>
 </dl>
@@ -5397,7 +4662,7 @@ await client.applications.createApplication({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">getApplication</a>({ ...params }) -> Darwin.GetApplicationResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">getApplication</a>({ ...params }) -> Darwin.GetApplicationApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -5410,7 +4675,7 @@ await client.applications.createApplication({
 <dd>
 
 ```typescript
-await client.applications.getApplication({
+await client.connect.applications.getApplication({
     applicationId: "applicationId"
 });
 
@@ -5428,7 +4693,7 @@ await client.applications.getApplication({
 <dl>
 <dd>
 
-**request:** `Darwin.GetApplicationRequest` 
+**request:** `Darwin.connect.GetApplicationApplicationsRequest` 
     
 </dd>
 </dl>
@@ -5448,7 +4713,7 @@ await client.applications.getApplication({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">archiveApplication</a>({ ...params }) -> Darwin.ArchiveApplicationResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">archiveApplication</a>({ ...params }) -> Darwin.ArchiveApplicationApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -5475,7 +4740,7 @@ Disables OAuth and revokes active enrollment links, service accounts, webhooks, 
 <dd>
 
 ```typescript
-await client.applications.archiveApplication({
+await client.connect.applications.archiveApplication({
     applicationId: "applicationId"
 });
 
@@ -5493,7 +4758,7 @@ await client.applications.archiveApplication({
 <dl>
 <dd>
 
-**request:** `Darwin.ArchiveApplicationRequest` 
+**request:** `Darwin.connect.ArchiveApplicationApplicationsRequest` 
     
 </dd>
 </dl>
@@ -5513,7 +4778,7 @@ await client.applications.archiveApplication({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">updateApplication</a>({ ...params }) -> Darwin.UpdateApplicationResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">updateApplication</a>({ ...params }) -> Darwin.UpdateApplicationApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -5526,7 +4791,7 @@ await client.applications.archiveApplication({
 <dd>
 
 ```typescript
-await client.applications.updateApplication({
+await client.connect.applications.updateApplication({
     applicationId: "applicationId"
 });
 
@@ -5544,7 +4809,7 @@ await client.applications.updateApplication({
 <dl>
 <dd>
 
-**request:** `Darwin.UpdateApplicationRequest` 
+**request:** `Darwin.connect.UpdateApplicationRequest` 
     
 </dd>
 </dl>
@@ -5564,9 +4829,23 @@ await client.applications.updateApplication({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">listApplicationAIs</a>({ ...params }) -> Darwin.ListApplicationAIsResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">getApplicationMonetization</a>({ ...params }) -> Darwin.GetApplicationMonetizationApplicationsResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the buyer-paid application fee policy. The configured fee is snapshotted into each immutable fee quote before buyer confirmation.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -5577,7 +4856,7 @@ await client.applications.updateApplication({
 <dd>
 
 ```typescript
-await client.applications.listApplicationAIs({
+await client.connect.applications.getApplicationMonetization({
     applicationId: "applicationId"
 });
 
@@ -5595,7 +4874,7 @@ await client.applications.listApplicationAIs({
 <dl>
 <dd>
 
-**request:** `Darwin.ListApplicationAIsRequest` 
+**request:** `Darwin.connect.GetApplicationMonetizationApplicationsRequest` 
     
 </dd>
 </dl>
@@ -5615,9 +4894,23 @@ await client.applications.listApplicationAIs({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">linkApplicationAi</a>({ ...params }) -> Darwin.LinkApplicationAiResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">updateApplicationMonetization</a>({ ...params }) -> Darwin.UpdateApplicationMonetizationApplicationsResponse</code></summary>
 <dl>
 <dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Owner credentials only. Configures no fee, a fixed buyer-paid fee, or a percentage of seller subtotal with a mandatory maximum cap.
+</dd>
+</dl>
+</dd>
+</dl>
 
 #### 🔌 Usage
 
@@ -5628,9 +4921,9 @@ await client.applications.listApplicationAIs({
 <dd>
 
 ```typescript
-await client.applications.linkApplicationAi({
+await client.connect.applications.updateApplicationMonetization({
     applicationId: "applicationId",
-    aiId: "aiId"
+    mode: "NONE"
 });
 
 ```
@@ -5647,7 +4940,7 @@ await client.applications.linkApplicationAi({
 <dl>
 <dd>
 
-**request:** `Darwin.LinkApplicationAiRequest` 
+**request:** `Darwin.connect.UpdateApplicationMonetizationRequest` 
     
 </dd>
 </dl>
@@ -5667,214 +4960,7 @@ await client.applications.linkApplicationAi({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">unlinkApplicationAi</a>({ ...params }) -> Darwin.UnlinkApplicationAiResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.applications.unlinkApplicationAi({
-    applicationId: "applicationId",
-    aiId: "aiId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.UnlinkApplicationAiRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ApplicationsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">listEnrollmentLinks</a>({ ...params }) -> Darwin.ListEnrollmentLinksResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.applications.listEnrollmentLinks({
-    applicationId: "applicationId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.ListEnrollmentLinksRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ApplicationsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">createEnrollmentLink</a>({ ...params }) -> Darwin.CreateEnrollmentLinkResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.applications.createEnrollmentLink({
-    applicationId: "applicationId",
-    name: "name"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.CreateEnrollmentLinkRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ApplicationsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">revokeEnrollmentLink</a>({ ...params }) -> Darwin.RevokeEnrollmentLinkResponse</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.applications.revokeEnrollmentLink({
-    applicationId: "applicationId",
-    enrollmentLinkId: "enrollmentLinkId"
-});
-
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `Darwin.RevokeEnrollmentLinkRequest` 
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ApplicationsClient.RequestOptions` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">getApplicationWallet</a>({ ...params }) -> Darwin.GetApplicationWalletResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">getApplicationWallet</a>({ ...params }) -> Darwin.GetApplicationWalletApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -5901,7 +4987,7 @@ Application owners can inspect available and reserved funds. Service accounts ca
 <dd>
 
 ```typescript
-await client.applications.getApplicationWallet({
+await client.connect.applications.getApplicationWallet({
     applicationId: "applicationId"
 });
 
@@ -5919,7 +5005,7 @@ await client.applications.getApplicationWallet({
 <dl>
 <dd>
 
-**request:** `Darwin.GetApplicationWalletRequest` 
+**request:** `Darwin.connect.GetApplicationWalletApplicationsRequest` 
     
 </dd>
 </dl>
@@ -5939,7 +5025,7 @@ await client.applications.getApplicationWallet({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">fundApplicationWallet</a>({ ...params }) -> Darwin.FundApplicationWalletResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">fundApplicationWallet</a>({ ...params }) -> Darwin.FundApplicationWalletApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -5966,7 +5052,7 @@ Owner credentials only. Transfers funds from an explicitly selected Darwin AI wa
 <dd>
 
 ```typescript
-await client.applications.fundApplicationWallet({
+await client.connect.applications.fundApplicationWallet({
     "Idempotency-Key": "Idempotency-Key",
     applicationId: "applicationId",
     aiId: "aiId",
@@ -5988,7 +5074,7 @@ await client.applications.fundApplicationWallet({
 <dl>
 <dd>
 
-**request:** `Darwin.FundApplicationWalletRequest` 
+**request:** `Darwin.connect.FundApplicationWalletRequest` 
     
 </dd>
 </dl>
@@ -6008,7 +5094,7 @@ await client.applications.fundApplicationWallet({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">listServiceAccounts</a>({ ...params }) -> Darwin.ListServiceAccountsResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">listServiceAccounts</a>({ ...params }) -> Darwin.ListServiceAccountsApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -6021,7 +5107,7 @@ await client.applications.fundApplicationWallet({
 <dd>
 
 ```typescript
-await client.applications.listServiceAccounts({
+await client.connect.applications.listServiceAccounts({
     applicationId: "applicationId"
 });
 
@@ -6039,7 +5125,7 @@ await client.applications.listServiceAccounts({
 <dl>
 <dd>
 
-**request:** `Darwin.ListServiceAccountsRequest` 
+**request:** `Darwin.connect.ListServiceAccountsApplicationsRequest` 
     
 </dd>
 </dl>
@@ -6059,7 +5145,7 @@ await client.applications.listServiceAccounts({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">createServiceAccount</a>({ ...params }) -> Darwin.CreateServiceAccountResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">createServiceAccount</a>({ ...params }) -> Darwin.CreateServiceAccountApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -6072,7 +5158,7 @@ await client.applications.listServiceAccounts({
 <dd>
 
 ```typescript
-await client.applications.createServiceAccount({
+await client.connect.applications.createServiceAccount({
     applicationId: "applicationId",
     name: "name"
 });
@@ -6091,7 +5177,7 @@ await client.applications.createServiceAccount({
 <dl>
 <dd>
 
-**request:** `Darwin.CreateServiceAccountRequest` 
+**request:** `Darwin.connect.CreateServiceAccountRequest` 
     
 </dd>
 </dl>
@@ -6111,7 +5197,7 @@ await client.applications.createServiceAccount({
 </dl>
 </details>
 
-<details><summary><code>client.applications.<a href="/src/api/resources/applications/client/Client.ts">revokeServiceAccount</a>({ ...params }) -> Darwin.RevokeServiceAccountResponse</code></summary>
+<details><summary><code>client.connect.applications.<a href="/src/api/resources/connect/resources/applications/client/Client.ts">revokeServiceAccount</a>({ ...params }) -> Darwin.RevokeServiceAccountApplicationsResponse</code></summary>
 <dl>
 <dd>
 
@@ -6124,7 +5210,7 @@ await client.applications.createServiceAccount({
 <dd>
 
 ```typescript
-await client.applications.revokeServiceAccount({
+await client.connect.applications.revokeServiceAccount({
     applicationId: "applicationId",
     serviceAccountId: "serviceAccountId"
 });
@@ -6143,7 +5229,7 @@ await client.applications.revokeServiceAccount({
 <dl>
 <dd>
 
-**request:** `Darwin.RevokeServiceAccountRequest` 
+**request:** `Darwin.connect.RevokeServiceAccountApplicationsRequest` 
     
 </dd>
 </dl>
@@ -6163,8 +5249,385 @@ await client.applications.revokeServiceAccount({
 </dl>
 </details>
 
-## Enrollment
-<details><summary><code>client.enrollment.<a href="/src/api/resources/enrollment/client/Client.ts">createEnrollmentBatch</a>({ ...params }) -> Darwin.EnrollmentBatchResult</code></summary>
+## Connect Users
+<details><summary><code>client.connect.users.<a href="/src/api/resources/connect/resources/users/client/Client.ts">resolveApplicationUser</a>({ ...params }) -> Darwin.ApplicationUserResolutionResult</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Service-account or authorized application credentials only. Reuses a durable app-scoped user mapping when one exists; otherwise returns a short-lived Darwin-hosted onboarding or reauthentication URL. OIDC and trusted-application proof exchange remain fail-closed preview capabilities.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.connect.users.resolveApplicationUser({
+    applicationId: "applicationId",
+    externalUserReference: "externalUserReference"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.connect.ResolveApplicationUserRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `UsersClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.connect.users.<a href="/src/api/resources/connect/resources/users/client/Client.ts">listApplicationAIs</a>({ ...params }) -> Darwin.ListApplicationAIsUsersResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.connect.users.listApplicationAIs({
+    applicationId: "applicationId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.connect.ListApplicationAIsUsersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `UsersClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.connect.users.<a href="/src/api/resources/connect/resources/users/client/Client.ts">linkApplicationAi</a>({ ...params }) -> Darwin.LinkApplicationAiUsersResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.connect.users.linkApplicationAi({
+    applicationId: "applicationId",
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.connect.LinkApplicationAiRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `UsersClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.connect.users.<a href="/src/api/resources/connect/resources/users/client/Client.ts">unlinkApplicationAi</a>({ ...params }) -> Darwin.UnlinkApplicationAiUsersResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.connect.users.unlinkApplicationAi({
+    applicationId: "applicationId",
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.connect.UnlinkApplicationAiUsersRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `UsersClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Connect Enrollment
+<details><summary><code>client.connect.enrollment.<a href="/src/api/resources/connect/resources/enrollment/client/Client.ts">listEnrollmentLinks</a>({ ...params }) -> Darwin.ListEnrollmentLinksEnrollmentResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.connect.enrollment.listEnrollmentLinks({
+    applicationId: "applicationId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.connect.ListEnrollmentLinksEnrollmentRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EnrollmentClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.connect.enrollment.<a href="/src/api/resources/connect/resources/enrollment/client/Client.ts">createEnrollmentLink</a>({ ...params }) -> Darwin.CreateEnrollmentLinkEnrollmentResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.connect.enrollment.createEnrollmentLink({
+    applicationId: "applicationId",
+    name: "name"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.connect.CreateEnrollmentLinkRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EnrollmentClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.connect.enrollment.<a href="/src/api/resources/connect/resources/enrollment/client/Client.ts">revokeEnrollmentLink</a>({ ...params }) -> Darwin.RevokeEnrollmentLinkEnrollmentResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.connect.enrollment.revokeEnrollmentLink({
+    applicationId: "applicationId",
+    enrollmentLinkId: "enrollmentLinkId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.connect.RevokeEnrollmentLinkEnrollmentRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EnrollmentClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.connect.enrollment.<a href="/src/api/resources/connect/resources/enrollment/client/Client.ts">createEnrollmentBatch</a>({ ...params }) -> Darwin.EnrollmentBatchResult</code></summary>
 <dl>
 <dd>
 
@@ -6191,7 +5654,7 @@ Creates one-time, user-distributed enrollment URLs for pseudonymous external ref
 <dd>
 
 ```typescript
-await client.enrollment.createEnrollmentBatch({
+await client.connect.enrollment.createEnrollmentBatch({
     applicationId: "applicationId",
     externalReferences: ["externalReferences"]
 });
@@ -6210,7 +5673,7 @@ await client.enrollment.createEnrollmentBatch({
 <dl>
 <dd>
 
-**request:** `Darwin.CreateEnrollmentBatchRequest` 
+**request:** `Darwin.connect.CreateEnrollmentBatchRequest` 
     
 </dd>
 </dl>
@@ -6230,7 +5693,7 @@ await client.enrollment.createEnrollmentBatch({
 </dl>
 </details>
 
-<details><summary><code>client.enrollment.<a href="/src/api/resources/enrollment/client/Client.ts">getEnrollmentBatch</a>({ ...params }) -> Darwin.EnrollmentBatchResult</code></summary>
+<details><summary><code>client.connect.enrollment.<a href="/src/api/resources/connect/resources/enrollment/client/Client.ts">getEnrollmentBatch</a>({ ...params }) -> Darwin.EnrollmentBatchResult</code></summary>
 <dl>
 <dd>
 
@@ -6243,7 +5706,7 @@ await client.enrollment.createEnrollmentBatch({
 <dd>
 
 ```typescript
-await client.enrollment.getEnrollmentBatch({
+await client.connect.enrollment.getEnrollmentBatch({
     applicationId: "applicationId",
     batchId: "batchId"
 });
@@ -6262,7 +5725,7 @@ await client.enrollment.getEnrollmentBatch({
 <dl>
 <dd>
 
-**request:** `Darwin.GetEnrollmentBatchRequest` 
+**request:** `Darwin.connect.GetEnrollmentBatchEnrollmentRequest` 
     
 </dd>
 </dl>
@@ -6282,8 +5745,8 @@ await client.enrollment.getEnrollmentBatch({
 </dl>
 </details>
 
-## Ephemeral Goals
-<details><summary><code>client.ephemeralGoals.<a href="/src/api/resources/ephemeralGoals/client/Client.ts">createEphemeralGoal</a>({ ...params }) -> Darwin.CreateEphemeralGoalResponse</code></summary>
+## Connect EphemeralGoals
+<details><summary><code>client.connect.ephemeralGoals.<a href="/src/api/resources/connect/resources/ephemeralGoals/client/Client.ts">createEphemeralGoal</a>({ ...params }) -> Darwin.CreateEphemeralGoalEphemeralGoalsResponse</code></summary>
 <dl>
 <dd>
 
@@ -6310,7 +5773,7 @@ Creates a pseudonymous goal without first creating a Darwin AI for the external 
 <dd>
 
 ```typescript
-await client.ephemeralGoals.createEphemeralGoal({
+await client.connect.ephemeralGoals.createEphemeralGoal({
     "Idempotency-Key": "Idempotency-Key",
     applicationId: "applicationId",
     externalUserReference: "externalUserReference",
@@ -6338,7 +5801,7 @@ await client.ephemeralGoals.createEphemeralGoal({
 <dl>
 <dd>
 
-**request:** `Darwin.CreateEphemeralGoalRequest` 
+**request:** `Darwin.connect.CreateEphemeralGoalRequest` 
     
 </dd>
 </dl>
@@ -6358,7 +5821,7 @@ await client.ephemeralGoals.createEphemeralGoal({
 </dl>
 </details>
 
-<details><summary><code>client.ephemeralGoals.<a href="/src/api/resources/ephemeralGoals/client/Client.ts">getEphemeralGoal</a>({ ...params }) -> Darwin.GetEphemeralGoalResponse</code></summary>
+<details><summary><code>client.connect.ephemeralGoals.<a href="/src/api/resources/connect/resources/ephemeralGoals/client/Client.ts">getEphemeralGoal</a>({ ...params }) -> Darwin.GetEphemeralGoalEphemeralGoalsResponse</code></summary>
 <dl>
 <dd>
 
@@ -6371,7 +5834,7 @@ await client.ephemeralGoals.createEphemeralGoal({
 <dd>
 
 ```typescript
-await client.ephemeralGoals.getEphemeralGoal({
+await client.connect.ephemeralGoals.getEphemeralGoal({
     applicationId: "applicationId",
     goalId: "goalId"
 });
@@ -6390,7 +5853,7 @@ await client.ephemeralGoals.getEphemeralGoal({
 <dl>
 <dd>
 
-**request:** `Darwin.GetEphemeralGoalRequest` 
+**request:** `Darwin.connect.GetEphemeralGoalEphemeralGoalsRequest` 
     
 </dd>
 </dl>
@@ -6410,7 +5873,7 @@ await client.ephemeralGoals.getEphemeralGoal({
 </dl>
 </details>
 
-<details><summary><code>client.ephemeralGoals.<a href="/src/api/resources/ephemeralGoals/client/Client.ts">castEphemeralGoal</a>({ ...params }) -> Darwin.CastEphemeralGoalResponse</code></summary>
+<details><summary><code>client.connect.ephemeralGoals.<a href="/src/api/resources/connect/resources/ephemeralGoals/client/Client.ts">castEphemeralGoal</a>({ ...params }) -> Darwin.CastEphemeralGoalEphemeralGoalsResponse</code></summary>
 <dl>
 <dd>
 
@@ -6423,7 +5886,7 @@ await client.ephemeralGoals.getEphemeralGoal({
 <dd>
 
 ```typescript
-await client.ephemeralGoals.castEphemeralGoal({
+await client.connect.ephemeralGoals.castEphemeralGoal({
     applicationId: "applicationId",
     goalId: "goalId"
 });
@@ -6442,7 +5905,7 @@ await client.ephemeralGoals.castEphemeralGoal({
 <dl>
 <dd>
 
-**request:** `Darwin.CastEphemeralGoalRequest` 
+**request:** `Darwin.connect.CastEphemeralGoalEphemeralGoalsRequest` 
     
 </dd>
 </dl>
@@ -6462,7 +5925,7 @@ await client.ephemeralGoals.castEphemeralGoal({
 </dl>
 </details>
 
-<details><summary><code>client.ephemeralGoals.<a href="/src/api/resources/ephemeralGoals/client/Client.ts">actOnEphemeralGoal</a>({ ...params }) -> Darwin.ActOnEphemeralGoalResponse</code></summary>
+<details><summary><code>client.connect.ephemeralGoals.<a href="/src/api/resources/connect/resources/ephemeralGoals/client/Client.ts">actOnEphemeralGoal</a>({ ...params }) -> Darwin.ActOnEphemeralGoalEphemeralGoalsResponse</code></summary>
 <dl>
 <dd>
 
@@ -6475,7 +5938,7 @@ await client.ephemeralGoals.castEphemeralGoal({
 <dd>
 
 ```typescript
-await client.ephemeralGoals.actOnEphemeralGoal({
+await client.connect.ephemeralGoals.actOnEphemeralGoal({
     applicationId: "applicationId",
     goalId: "goalId",
     action: "CANCEL"
@@ -6495,7 +5958,7 @@ await client.ephemeralGoals.actOnEphemeralGoal({
 <dl>
 <dd>
 
-**request:** `Darwin.EphemeralGoalActionRequest` 
+**request:** `Darwin.connect.EphemeralGoalActionRequest` 
     
 </dd>
 </dl>
@@ -6515,8 +5978,8 @@ await client.ephemeralGoals.actOnEphemeralGoal({
 </dl>
 </details>
 
-## Webhooks
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">listWebhooks</a>({ ...params }) -> Darwin.ListWebhooksResponse</code></summary>
+## Connect Webhooks
+<details><summary><code>client.connect.webhooks.<a href="/src/api/resources/connect/resources/webhooks/client/Client.ts">listWebhooks</a>({ ...params }) -> Darwin.ListWebhooksWebhooksResponse</code></summary>
 <dl>
 <dd>
 
@@ -6529,7 +5992,7 @@ await client.ephemeralGoals.actOnEphemeralGoal({
 <dd>
 
 ```typescript
-await client.webhooks.listWebhooks({
+await client.connect.webhooks.listWebhooks({
     applicationId: "applicationId"
 });
 
@@ -6547,7 +6010,7 @@ await client.webhooks.listWebhooks({
 <dl>
 <dd>
 
-**request:** `Darwin.ListWebhooksRequest` 
+**request:** `Darwin.connect.ListWebhooksWebhooksRequest` 
     
 </dd>
 </dl>
@@ -6567,7 +6030,7 @@ await client.webhooks.listWebhooks({
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">createWebhook</a>({ ...params }) -> Darwin.CreateWebhookResponse</code></summary>
+<details><summary><code>client.connect.webhooks.<a href="/src/api/resources/connect/resources/webhooks/client/Client.ts">createWebhook</a>({ ...params }) -> Darwin.CreateWebhookWebhooksResponse</code></summary>
 <dl>
 <dd>
 
@@ -6580,7 +6043,7 @@ await client.webhooks.listWebhooks({
 <dd>
 
 ```typescript
-await client.webhooks.createWebhook({
+await client.connect.webhooks.createWebhook({
     applicationId: "applicationId",
     url: "url",
     events: ["AI.created"]
@@ -6600,7 +6063,7 @@ await client.webhooks.createWebhook({
 <dl>
 <dd>
 
-**request:** `Darwin.CreateWebhookRequest` 
+**request:** `Darwin.connect.CreateWebhookRequest` 
     
 </dd>
 </dl>
@@ -6620,7 +6083,7 @@ await client.webhooks.createWebhook({
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">revokeWebhook</a>({ ...params }) -> Darwin.RevokeWebhookResponse</code></summary>
+<details><summary><code>client.connect.webhooks.<a href="/src/api/resources/connect/resources/webhooks/client/Client.ts">revokeWebhook</a>({ ...params }) -> Darwin.RevokeWebhookWebhooksResponse</code></summary>
 <dl>
 <dd>
 
@@ -6633,7 +6096,7 @@ await client.webhooks.createWebhook({
 <dd>
 
 ```typescript
-await client.webhooks.revokeWebhook({
+await client.connect.webhooks.revokeWebhook({
     applicationId: "applicationId",
     webhookId: "webhookId"
 });
@@ -6652,7 +6115,7 @@ await client.webhooks.revokeWebhook({
 <dl>
 <dd>
 
-**request:** `Darwin.RevokeWebhookRequest` 
+**request:** `Darwin.connect.RevokeWebhookWebhooksRequest` 
     
 </dd>
 </dl>
@@ -6672,7 +6135,7 @@ await client.webhooks.revokeWebhook({
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">listWebhookDeliveries</a>({ ...params }) -> Darwin.ListWebhookDeliveriesResponse</code></summary>
+<details><summary><code>client.connect.webhooks.<a href="/src/api/resources/connect/resources/webhooks/client/Client.ts">listWebhookDeliveries</a>({ ...params }) -> Darwin.ListWebhookDeliveriesWebhooksResponse</code></summary>
 <dl>
 <dd>
 
@@ -6685,7 +6148,7 @@ await client.webhooks.revokeWebhook({
 <dd>
 
 ```typescript
-await client.webhooks.listWebhookDeliveries({
+await client.connect.webhooks.listWebhookDeliveries({
     applicationId: "applicationId",
     webhookId: "webhookId"
 });
@@ -6704,7 +6167,7 @@ await client.webhooks.listWebhookDeliveries({
 <dl>
 <dd>
 
-**request:** `Darwin.ListWebhookDeliveriesRequest` 
+**request:** `Darwin.connect.ListWebhookDeliveriesWebhooksRequest` 
     
 </dd>
 </dl>
@@ -6724,7 +6187,7 @@ await client.webhooks.listWebhookDeliveries({
 </dl>
 </details>
 
-<details><summary><code>client.webhooks.<a href="/src/api/resources/webhooks/client/Client.ts">retryWebhookDelivery</a>({ ...params }) -> Darwin.RetryWebhookDeliveryResponse</code></summary>
+<details><summary><code>client.connect.webhooks.<a href="/src/api/resources/connect/resources/webhooks/client/Client.ts">retryWebhookDelivery</a>({ ...params }) -> Darwin.RetryWebhookDeliveryWebhooksResponse</code></summary>
 <dl>
 <dd>
 
@@ -6737,7 +6200,7 @@ await client.webhooks.listWebhookDeliveries({
 <dd>
 
 ```typescript
-await client.webhooks.retryWebhookDelivery({
+await client.connect.webhooks.retryWebhookDelivery({
     applicationId: "applicationId",
     webhookId: "webhookId",
     deliveryId: "deliveryId"
@@ -6757,7 +6220,7 @@ await client.webhooks.retryWebhookDelivery({
 <dl>
 <dd>
 
-**request:** `Darwin.RetryWebhookDeliveryRequest` 
+**request:** `Darwin.connect.RetryWebhookDeliveryWebhooksRequest` 
     
 </dd>
 </dl>
@@ -6766,6 +6229,1082 @@ await client.webhooks.retryWebhookDelivery({
 <dd>
 
 **requestOptions:** `WebhooksClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Supply Businesses
+<details><summary><code>client.supply.businesses.<a href="/src/api/resources/supply/resources/businesses/client/Client.ts">listAIs</a>() -> Darwin.ListAIsBusinessesResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.businesses.listAIs();
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**requestOptions:** `BusinessesClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.businesses.<a href="/src/api/resources/supply/resources/businesses/client/Client.ts">createAi</a>({ ...params }) -> Darwin.CreateAiBusinessesResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Every Darwin account already owns exactly one personal AI. This endpoint creates an additional business AI. A verified phone number may own up to three business AIs.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.businesses.createAi({
+    name: "name"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.CreateAiRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BusinessesClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.businesses.<a href="/src/api/resources/supply/resources/businesses/client/Client.ts">getAi</a>({ ...params }) -> Darwin.GetAiBusinessesResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.businesses.getAi({
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.GetAiBusinessesRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BusinessesClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.businesses.<a href="/src/api/resources/supply/resources/businesses/client/Client.ts">updateAi</a>({ ...params }) -> Darwin.UpdateAiBusinessesResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.businesses.updateAi({
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.UpdateAiRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `BusinessesClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Supply Listings
+<details><summary><code>client.supply.listings.<a href="/src/api/resources/supply/resources/listings/client/Client.ts">listListings</a>({ ...params }) -> Darwin.ListListingsListingsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.listings.listListings({
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.ListListingsListingsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ListingsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.listings.<a href="/src/api/resources/supply/resources/listings/client/Client.ts">createListing</a>({ ...params }) -> Darwin.CreateListingListingsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.listings.createListing({
+    aiId: "aiId",
+    body: {
+        type: "PRODUCT",
+        executionDomain: "HUMAN",
+        title: "title"
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.CreateListingListingsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ListingsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.listings.<a href="/src/api/resources/supply/resources/listings/client/Client.ts">getListing</a>({ ...params }) -> Darwin.GetListingListingsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.listings.getListing({
+    aiId: "aiId",
+    listingId: "listingId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.GetListingListingsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ListingsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.listings.<a href="/src/api/resources/supply/resources/listings/client/Client.ts">archiveListing</a>({ ...params }) -> Darwin.ArchiveListingListingsResponse</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.listings.archiveListing({
+    aiId: "aiId",
+    listingId: "listingId",
+    expectedRevision: 1
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.ArchiveListingListingsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ListingsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.listings.<a href="/src/api/resources/supply/resources/listings/client/Client.ts">updateListing</a>({ ...params }) -> Darwin.UpdateListingListingsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Supply expectedRevision to prevent a silent concurrent overwrite.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.listings.updateListing({
+    aiId: "aiId",
+    listingId: "listingId",
+    expectedRevision: 1
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.UpdateListingRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ListingsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.listings.<a href="/src/api/resources/supply/resources/listings/client/Client.ts">batchUpsertListings</a>({ ...params }) -> Darwin.BatchUpsertListingsListingsResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Upserts at most 100 Listings by sourceId and externalRef.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.listings.batchUpsertListings({
+    aiId: "aiId",
+    listings: [{
+            type: "PRODUCT",
+            executionDomain: "HUMAN",
+            title: "title"
+        }]
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.BatchUpsertListingsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ListingsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Supply Earnings
+<details><summary><code>client.supply.earnings.<a href="/src/api/resources/supply/resources/earnings/client/Client.ts">getAiBillingSummary</a>({ ...params }) -> Darwin.AiBillingSummary</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns deposited, promotional, reserved, pending, spendable, and withdrawable wallet balances together with money settings and available actions. Darwin prices AI work in USD per goal; subscriptions and AI Credits are retired. Available only to user API keys with `payments:read`.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.earnings.getAiBillingSummary({
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.GetAiBillingSummaryEarningsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EarningsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.earnings.<a href="/src/api/resources/supply/resources/earnings/client/Client.ts">listAiBillingActivity</a>({ ...params }) -> Darwin.AiBillingActivityPage</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.earnings.listAiBillingActivity({
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.ListAiBillingActivityEarningsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EarningsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.earnings.<a href="/src/api/resources/supply/resources/earnings/client/Client.ts">createAiPaymentMethodSetup</a>({ ...params }) -> Darwin.PaymentIntentClientDetails</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a SetupIntent for an explicitly consented saved payment method. A saved method is required before automatic wallet top-ups can be enabled.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.earnings.createAiPaymentMethodSetup({
+    "Idempotency-Key": "Idempotency-Key",
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.CreateAiPaymentMethodSetupEarningsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EarningsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.earnings.<a href="/src/api/resources/supply/resources/earnings/client/Client.ts">createAiWalletTopup</a>({ ...params }) -> Darwin.WalletTopupIntent</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a PaymentIntent that adds nonwithdrawable funded money to the AI Wallet after payment succeeds. The response separates the wallet credit, processing cost, and card charge.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.earnings.createAiWalletTopup({
+    "Idempotency-Key": "Idempotency-Key",
+    aiId: "aiId",
+    amountMinor: 1
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.WalletTopupRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EarningsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.earnings.<a href="/src/api/resources/supply/resources/earnings/client/Client.ts">updateAiMoneySettings</a>({ ...params }) -> Darwin.AiBillingAccount</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Configures optional wallet auto top-up and the earned-fund payout schedule. Auto top-up is disabled by default and requires a saved payment method.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.earnings.updateAiMoneySettings({
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.UpdateMoneySettingsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EarningsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.earnings.<a href="/src/api/resources/supply/resources/earnings/client/Client.ts">quoteAiWalletWithdrawal</a>({ ...params }) -> Darwin.WithdrawalQuote</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the exact provider cost and expected bank payout for a standard or instant withdrawal. Only settled earned funds are withdrawable.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.earnings.quoteAiWalletWithdrawal({
+    aiId: "aiId",
+    body: {
+        amountMinor: 1
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.QuoteAiWalletWithdrawalEarningsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EarningsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.earnings.<a href="/src/api/resources/supply/resources/earnings/client/Client.ts">createAiWalletWithdrawal</a>({ ...params }) -> Darwin.WalletWithdrawal</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Withdraws settled earned funds using the selected payout speed. Promotional and card-funded wallet money cannot be withdrawn.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.earnings.createAiWalletWithdrawal({
+    "Idempotency-Key": "Idempotency-Key",
+    aiId: "aiId",
+    body: {
+        amountMinor: 1
+    }
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.CreateAiWalletWithdrawalEarningsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EarningsClient.RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.supply.earnings.<a href="/src/api/resources/supply/resources/earnings/client/Client.ts">createAiPayoutMethodSetup</a>({ ...params }) -> Darwin.PayoutSetup</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a hosted onboarding link that securely collects the information required to receive and withdraw earned marketplace proceeds.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.supply.earnings.createAiPayoutMethodSetup({
+    aiId: "aiId"
+});
+
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `Darwin.supply.CreateAiPayoutMethodSetupEarningsRequest` 
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EarningsClient.RequestOptions` 
     
 </dd>
 </dl>

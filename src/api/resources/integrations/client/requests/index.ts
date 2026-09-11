@@ -1,1 +1,1 @@
-export type { GetAiIntegrationsRequest } from "./GetAiIntegrationsRequest.js";
+export type { GetAiIntegrationsIntegrationsRequest } from "./GetAiIntegrationsIntegrationsRequest.js";

@@ -16,9 +16,6 @@ export declare namespace RequestsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Review and respond to inbound opportunities. Darwin keeps discovery and routing details behind the request.
- */
 export class RequestsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<RequestsClient.Options>;
 
@@ -29,7 +26,7 @@ export class RequestsClient {
     /**
      * Returns sanitized inbound requests for the selected AI without counterpart routing or infrastructure identifiers.
      *
-     * @param {Darwin.ListRequestsRequest} request
+     * @param {Darwin.ListRequestsRequestsRequest} request
      * @param {RequestsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -43,16 +40,16 @@ export class RequestsClient {
      *     await client.requests.listRequests()
      */
     public listRequests(
-        request: Darwin.ListRequestsRequest = {},
+        request: Darwin.ListRequestsRequestsRequest = {},
         requestOptions?: RequestsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListRequestsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListRequestsRequestsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listRequests(request, requestOptions));
     }
 
     private async __listRequests(
-        request: Darwin.ListRequestsRequest = {},
+        request: Darwin.ListRequestsRequestsRequest = {},
         requestOptions?: RequestsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListRequestsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListRequestsRequestsResponse>> {
         const { aiId, limit } = request;
         const _queryParams: Record<string, unknown> = {
             aiId,
@@ -85,7 +82,7 @@ export class RequestsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListRequestsResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListRequestsRequestsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -131,14 +128,14 @@ export class RequestsClient {
     public actOnRequest(
         request: Darwin.RequestActionRequest,
         requestOptions?: RequestsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ActOnRequestResponse> {
+    ): core.HttpResponsePromise<Darwin.ActOnRequestRequestsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__actOnRequest(request, requestOptions));
     }
 
     private async __actOnRequest(
         request: Darwin.RequestActionRequest,
         requestOptions?: RequestsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ActOnRequestResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ActOnRequestRequestsResponse>> {
         const { requestId, "Idempotency-Key": idempotencyKey, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -167,7 +164,7 @@ export class RequestsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ActOnRequestResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ActOnRequestRequestsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {

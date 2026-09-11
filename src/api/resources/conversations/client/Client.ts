@@ -16,9 +16,6 @@ export declare namespace ConversationsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Start conversations and exchange messages with an account’s AIs.
- */
 export class ConversationsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ConversationsClient.Options>;
 
@@ -27,7 +24,7 @@ export class ConversationsClient {
     }
 
     /**
-     * @param {Darwin.GetSelectedAiConversationRequest} request
+     * @param {Darwin.GetSelectedAiConversationConversationsRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -41,14 +38,14 @@ export class ConversationsClient {
      *     await client.conversations.getSelectedAiConversation()
      */
     public getSelectedAiConversation(
-        request: Darwin.GetSelectedAiConversationRequest = {},
+        request: Darwin.GetSelectedAiConversationConversationsRequest = {},
         requestOptions?: ConversationsClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.ConversationPage> {
         return core.HttpResponsePromise.fromPromise(this.__getSelectedAiConversation(request, requestOptions));
     }
 
     private async __getSelectedAiConversation(
-        request: Darwin.GetSelectedAiConversationRequest = {},
+        request: Darwin.GetSelectedAiConversationConversationsRequest = {},
         requestOptions?: ConversationsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.ConversationPage>> {
         const { aiId, limit, cursor } = request;
@@ -190,7 +187,7 @@ export class ConversationsClient {
     }
 
     /**
-     * @param {Darwin.ListAiConversationsRequest} request
+     * @param {Darwin.ListAiConversationsConversationsRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -206,16 +203,16 @@ export class ConversationsClient {
      *     })
      */
     public listAiConversations(
-        request: Darwin.ListAiConversationsRequest,
+        request: Darwin.ListAiConversationsConversationsRequest,
         requestOptions?: ConversationsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListAiConversationsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListAiConversationsConversationsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listAiConversations(request, requestOptions));
     }
 
     private async __listAiConversations(
-        request: Darwin.ListAiConversationsRequest,
+        request: Darwin.ListAiConversationsConversationsRequest,
         requestOptions?: ConversationsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListAiConversationsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListAiConversationsConversationsResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -240,7 +237,10 @@ export class ConversationsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListAiConversationsResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.ListAiConversationsConversationsResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
@@ -266,7 +266,7 @@ export class ConversationsClient {
     }
 
     /**
-     * @param {Darwin.CreateAiConversationRequest} request
+     * @param {Darwin.CreateAiConversationConversationsRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -282,14 +282,14 @@ export class ConversationsClient {
      *     })
      */
     public createAiConversation(
-        request: Darwin.CreateAiConversationRequest,
+        request: Darwin.CreateAiConversationConversationsRequest,
         requestOptions?: ConversationsClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.ConversationPage> {
         return core.HttpResponsePromise.fromPromise(this.__createAiConversation(request, requestOptions));
     }
 
     private async __createAiConversation(
-        request: Darwin.CreateAiConversationRequest,
+        request: Darwin.CreateAiConversationConversationsRequest,
         requestOptions?: ConversationsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.ConversationPage>> {
         const { aiId } = request;
@@ -342,7 +342,7 @@ export class ConversationsClient {
     }
 
     /**
-     * @param {Darwin.GetConversationRequest} request
+     * @param {Darwin.GetConversationConversationsRequest} request
      * @param {ConversationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -358,14 +358,14 @@ export class ConversationsClient {
      *     })
      */
     public getConversation(
-        request: Darwin.GetConversationRequest,
+        request: Darwin.GetConversationConversationsRequest,
         requestOptions?: ConversationsClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.ConversationPage> {
         return core.HttpResponsePromise.fromPromise(this.__getConversation(request, requestOptions));
     }
 
     private async __getConversation(
-        request: Darwin.GetConversationRequest,
+        request: Darwin.GetConversationConversationsRequest,
         requestOptions?: ConversationsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.ConversationPage>> {
         const { conversationId, limit, cursor } = request;

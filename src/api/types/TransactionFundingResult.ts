@@ -14,6 +14,9 @@ export namespace TransactionFundingResult {
     export const State = {
         Ready: "ready",
         RequiresFunding: "requires_funding",
+        PaymentAuthorizationRequired: "payment_authorization_required",
+        RecurringApprovalRequired: "recurring_approval_required",
+        RecurringScheduled: "recurring_scheduled",
     } as const;
     export type State = (typeof State)[keyof typeof State];
 }

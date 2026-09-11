@@ -26,6 +26,9 @@ export interface Transaction {
     currency: string;
     status: string;
     settlementMode: Transaction.SettlementMode;
+    sellerAcceptanceStatus?: string | undefined;
+    customerAccountStatus?: string | undefined;
+    fulfillmentStatus?: string | undefined;
     fundedAt?: (string | null) | undefined;
     transferredAt?: (string | null) | undefined;
     refundedAt?: (string | null) | undefined;

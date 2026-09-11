@@ -16,9 +16,6 @@ export declare namespace TransactionsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Reserve, inspect, cancel, and request refunds for marketplace funds without exposing provider credentials.
- */
 export class TransactionsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<TransactionsClient.Options>;
 
@@ -27,9 +24,9 @@ export class TransactionsClient {
     }
 
     /**
-     * Creates an idempotent reservation for the accepted maximum cap. Performance settlement releases any unused amount.
+     * Creates an idempotent reservation for the accepted maximum cap. Choose Darwin-managed payment or the application-managed Shared Payment Token preview. Performance settlement releases any unused amount.
      *
-     * @param {Darwin.CreateDealTransactionRequest} request
+     * @param {Darwin.CreateTransactionFundingRequest} request
      * @param {TransactionsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -46,17 +43,17 @@ export class TransactionsClient {
      *     })
      */
     public createDealTransaction(
-        request: Darwin.CreateDealTransactionRequest,
+        request: Darwin.CreateTransactionFundingRequest,
         requestOptions?: TransactionsClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.TransactionFundingResult> {
         return core.HttpResponsePromise.fromPromise(this.__createDealTransaction(request, requestOptions));
     }
 
     private async __createDealTransaction(
-        request: Darwin.CreateDealTransactionRequest,
+        request: Darwin.CreateTransactionFundingRequest,
         requestOptions?: TransactionsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.TransactionFundingResult>> {
-        const { dealId, "Idempotency-Key": idempotencyKey } = request;
+        const { dealId, "Idempotency-Key": idempotencyKey, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -73,7 +70,10 @@ export class TransactionsClient {
             ),
             method: "POST",
             headers: _headers,
+            contentType: "application/json",
             queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
@@ -107,7 +107,7 @@ export class TransactionsClient {
     }
 
     /**
-     * @param {Darwin.ListTransactionsRequest} request
+     * @param {Darwin.ListTransactionsTransactionsRequest} request
      * @param {TransactionsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -121,16 +121,16 @@ export class TransactionsClient {
      *     await client.transactions.listTransactions()
      */
     public listTransactions(
-        request: Darwin.ListTransactionsRequest = {},
+        request: Darwin.ListTransactionsTransactionsRequest = {},
         requestOptions?: TransactionsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListTransactionsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListTransactionsTransactionsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listTransactions(request, requestOptions));
     }
 
     private async __listTransactions(
-        request: Darwin.ListTransactionsRequest = {},
+        request: Darwin.ListTransactionsTransactionsRequest = {},
         requestOptions?: TransactionsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListTransactionsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListTransactionsTransactionsResponse>> {
         const { aiId } = request;
         const _queryParams: Record<string, unknown> = {
             aiId,
@@ -162,7 +162,10 @@ export class TransactionsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListTransactionsResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.ListTransactionsTransactionsResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
@@ -188,7 +191,7 @@ export class TransactionsClient {
     }
 
     /**
-     * @param {Darwin.GetTransactionRequest} request
+     * @param {Darwin.GetTransactionTransactionsRequest} request
      * @param {TransactionsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -204,16 +207,16 @@ export class TransactionsClient {
      *     })
      */
     public getTransaction(
-        request: Darwin.GetTransactionRequest,
+        request: Darwin.GetTransactionTransactionsRequest,
         requestOptions?: TransactionsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetTransactionResponse> {
+    ): core.HttpResponsePromise<Darwin.GetTransactionTransactionsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getTransaction(request, requestOptions));
     }
 
     private async __getTransaction(
-        request: Darwin.GetTransactionRequest,
+        request: Darwin.GetTransactionTransactionsRequest,
         requestOptions?: TransactionsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetTransactionResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetTransactionTransactionsResponse>> {
         const { transactionId, aiId } = request;
         const _queryParams: Record<string, unknown> = {
             aiId,
@@ -245,7 +248,10 @@ export class TransactionsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetTransactionResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.GetTransactionTransactionsResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
@@ -271,6 +277,99 @@ export class TransactionsClient {
     }
 
     /**
+     * User credentials only. Returns the provider, scopes, retention choices, and current authorization state needed after funding and before fulfillment.
+     *
+     * @param {Darwin.GetTransactionAccountRequirementTransactionsRequest} request
+     * @param {TransactionsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Darwin.BadRequestError}
+     * @throws {@link Darwin.UnauthorizedError}
+     * @throws {@link Darwin.ForbiddenError}
+     * @throws {@link Darwin.NotFoundError}
+     * @throws {@link errors.DarwinError}
+     * @throws {@link errors.DarwinTimeoutError}
+     *
+     * @example
+     *     await client.transactions.getTransactionAccountRequirement({
+     *         transactionId: "transactionId"
+     *     })
+     */
+    public getTransactionAccountRequirement(
+        request: Darwin.GetTransactionAccountRequirementTransactionsRequest,
+        requestOptions?: TransactionsClient.RequestOptions,
+    ): core.HttpResponsePromise<Darwin.GetTransactionAccountRequirementTransactionsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__getTransactionAccountRequirement(request, requestOptions));
+    }
+
+    private async __getTransactionAccountRequirement(
+        request: Darwin.GetTransactionAccountRequirementTransactionsRequest,
+        requestOptions?: TransactionsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Darwin.GetTransactionAccountRequirementTransactionsResponse>> {
+        const { transactionId, aiId } = request;
+        const _queryParams: Record<string, unknown> = {
+            aiId,
+        };
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.DarwinEnvironment.Production,
+                `transactions/${core.url.encodePathParam(transactionId)}/account-requirement`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryString: core.url
+                .queryBuilder()
+                .addMany(_queryParams)
+                .mergeAdditional(requestOptions?.queryParams)
+                .build(),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Darwin.GetTransactionAccountRequirementTransactionsResponse,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Darwin.BadRequestError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 401:
+                    throw new Darwin.UnauthorizedError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 403:
+                    throw new Darwin.ForbiddenError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 404:
+                    throw new Darwin.NotFoundError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                default:
+                    throw new errors.DarwinError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "GET",
+            "/transactions/{transactionId}/account-requirement",
+        );
+    }
+
+    /**
      * Owner credentials only. Refund requests require an Idempotency-Key header.
      *
      * @param {Darwin.TransactionActionRequest} request
@@ -293,14 +392,14 @@ export class TransactionsClient {
     public actOnTransaction(
         request: Darwin.TransactionActionRequest,
         requestOptions?: TransactionsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ActOnTransactionResponse> {
+    ): core.HttpResponsePromise<Darwin.ActOnTransactionTransactionsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__actOnTransaction(request, requestOptions));
     }
 
     private async __actOnTransaction(
         request: Darwin.TransactionActionRequest,
         requestOptions?: TransactionsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ActOnTransactionResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ActOnTransactionTransactionsResponse>> {
         const { transactionId, "Idempotency-Key": idempotencyKey, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -329,7 +428,10 @@ export class TransactionsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ActOnTransactionResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.ActOnTransactionTransactionsResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
@@ -356,6 +458,100 @@ export class TransactionsClient {
             _response.rawResponse,
             "POST",
             "/transactions/{transactionId}/actions",
+        );
+    }
+
+    /**
+     * Private preview. Validates and consumes one transaction-scoped Stripe Shared Payment Token. Generic PaymentMethod IDs, card data, and caller assertions that a payment occurred are rejected.
+     *
+     * @param {Darwin.ApplicationPaymentAuthorizationRequest} request
+     * @param {TransactionsClient.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @throws {@link Darwin.BadRequestError}
+     * @throws {@link Darwin.UnauthorizedError}
+     * @throws {@link Darwin.ForbiddenError}
+     * @throws {@link Darwin.NotFoundError}
+     * @throws {@link errors.DarwinError}
+     * @throws {@link errors.DarwinTimeoutError}
+     *
+     * @example
+     *     await client.transactions.authorizeTransactionPayment({
+     *         "Idempotency-Key": "Idempotency-Key",
+     *         transactionId: "transactionId",
+     *         type: "STRIPE_SHARED_PAYMENT_TOKEN",
+     *         networkProfileId: "networkProfileId",
+     *         grantedToken: "grantedToken"
+     *     })
+     */
+    public authorizeTransactionPayment(
+        request: Darwin.ApplicationPaymentAuthorizationRequest,
+        requestOptions?: TransactionsClient.RequestOptions,
+    ): core.HttpResponsePromise<Darwin.AuthorizeTransactionPaymentTransactionsResponse> {
+        return core.HttpResponsePromise.fromPromise(this.__authorizeTransactionPayment(request, requestOptions));
+    }
+
+    private async __authorizeTransactionPayment(
+        request: Darwin.ApplicationPaymentAuthorizationRequest,
+        requestOptions?: TransactionsClient.RequestOptions,
+    ): Promise<core.WithRawResponse<Darwin.AuthorizeTransactionPaymentTransactionsResponse>> {
+        const { transactionId, "Idempotency-Key": idempotencyKey, ..._body } = request;
+        const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
+        const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            _authRequest.headers,
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ "Idempotency-Key": idempotencyKey }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.DarwinEnvironment.Production,
+                `transactions/${core.url.encodePathParam(transactionId)}/payment-authorizations`,
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryString: core.url.queryBuilder().mergeAdditional(requestOptions?.queryParams).build(),
+            requestType: "json",
+            body: mergeAdditionalBodyParameters(_body, requestOptions?.additionalBodyParameters),
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+            fetchFn: this._options?.fetch,
+            logging: this._options.logging,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as Darwin.AuthorizeTransactionPaymentTransactionsResponse,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new Darwin.BadRequestError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 401:
+                    throw new Darwin.UnauthorizedError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 403:
+                    throw new Darwin.ForbiddenError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                case 404:
+                    throw new Darwin.NotFoundError(_response.error.body as Darwin.Error_, _response.rawResponse);
+                default:
+                    throw new errors.DarwinError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                        rawResponse: _response.rawResponse,
+                    });
+            }
+        }
+
+        return handleNonStatusCodeError(
+            _response.error,
+            _response.rawResponse,
+            "POST",
+            "/transactions/{transactionId}/payment-authorizations",
         );
     }
 }

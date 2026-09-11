@@ -8,7 +8,7 @@ describe("TransactionsClient", () => {
     test("createDealTransaction (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
-
+        const rawRequestBody = {};
         const rawResponseBody = {
             state: "ready",
             transaction: {
@@ -30,6 +30,9 @@ describe("TransactionsClient", () => {
                 currency: "currency",
                 status: "status",
                 settlementMode: "fixed",
+                sellerAcceptanceStatus: "sellerAcceptanceStatus",
+                customerAccountStatus: "customerAccountStatus",
+                fulfillmentStatus: "fulfillmentStatus",
                 fundedAt: "2024-01-15T09:30:00Z",
                 transferredAt: "2024-01-15T09:30:00Z",
                 refundedAt: "2024-01-15T09:30:00Z",
@@ -47,6 +50,7 @@ describe("TransactionsClient", () => {
             .mockEndpoint()
             .post("/deals/dealId/transactions")
             .header("Idempotency-Key", "Idempotency-Key")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(200)
             .jsonBody(rawResponseBody)
@@ -62,13 +66,14 @@ describe("TransactionsClient", () => {
     test("createDealTransaction (2)", async () => {
         const server = mockServerPool.createServer();
         const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
-
+        const rawRequestBody = {};
         const rawResponseBody = {};
 
         server
             .mockEndpoint()
             .post("/deals/dealId/transactions")
             .header("Idempotency-Key", "idempotencyKey")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(400)
             .jsonBody(rawResponseBody)
@@ -85,13 +90,14 @@ describe("TransactionsClient", () => {
     test("createDealTransaction (3)", async () => {
         const server = mockServerPool.createServer();
         const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
-
+        const rawRequestBody = {};
         const rawResponseBody = {};
 
         server
             .mockEndpoint()
             .post("/deals/dealId/transactions")
             .header("Idempotency-Key", "idempotencyKey")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(401)
             .jsonBody(rawResponseBody)
@@ -108,13 +114,14 @@ describe("TransactionsClient", () => {
     test("createDealTransaction (4)", async () => {
         const server = mockServerPool.createServer();
         const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
-
+        const rawRequestBody = {};
         const rawResponseBody = {};
 
         server
             .mockEndpoint()
             .post("/deals/dealId/transactions")
             .header("Idempotency-Key", "idempotencyKey")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(403)
             .jsonBody(rawResponseBody)
@@ -131,13 +138,14 @@ describe("TransactionsClient", () => {
     test("createDealTransaction (5)", async () => {
         const server = mockServerPool.createServer();
         const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
-
+        const rawRequestBody = {};
         const rawResponseBody = {};
 
         server
             .mockEndpoint()
             .post("/deals/dealId/transactions")
             .header("Idempotency-Key", "idempotencyKey")
+            .jsonBody(rawRequestBody)
             .respondWith()
             .statusCode(404)
             .jsonBody(rawResponseBody)
@@ -176,6 +184,9 @@ describe("TransactionsClient", () => {
                     currency: "currency",
                     status: "status",
                     settlementMode: "fixed",
+                    sellerAcceptanceStatus: "sellerAcceptanceStatus",
+                    customerAccountStatus: "customerAccountStatus",
+                    fulfillmentStatus: "fulfillmentStatus",
                     fundedAt: "2024-01-15T09:30:00Z",
                     transferredAt: "2024-01-15T09:30:00Z",
                     refundedAt: "2024-01-15T09:30:00Z",
@@ -269,6 +280,9 @@ describe("TransactionsClient", () => {
                 currency: "currency",
                 status: "status",
                 settlementMode: "fixed",
+                sellerAcceptanceStatus: "sellerAcceptanceStatus",
+                customerAccountStatus: "customerAccountStatus",
+                fulfillmentStatus: "fulfillmentStatus",
                 fundedAt: "2024-01-15T09:30:00Z",
                 transferredAt: "2024-01-15T09:30:00Z",
                 refundedAt: "2024-01-15T09:30:00Z",
@@ -377,6 +391,121 @@ describe("TransactionsClient", () => {
         }).rejects.toThrow(Darwin.NotFoundError);
     });
 
+    test("getTransactionAccountRequirement (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {
+            accountRequirement: {
+                transactionId: "transactionId",
+                transactionStatus: "transactionStatus",
+                requirement: "NONE",
+                providerKey: "providerKey",
+                requiredScopes: ["requiredScopes"],
+                allowedRetention: ["REQUEST_ONLY"],
+                status: "NOT_REQUIRED",
+                missingScopes: ["missingScopes"],
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .get("/transactions/transactionId/account-requirement")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.transactions.getTransactionAccountRequirement({
+            transactionId: "transactionId",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("getTransactionAccountRequirement (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/transactions/transactionId/account-requirement")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactions.getTransactionAccountRequirement({
+                transactionId: "transactionId",
+            });
+        }).rejects.toThrow(Darwin.BadRequestError);
+    });
+
+    test("getTransactionAccountRequirement (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/transactions/transactionId/account-requirement")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactions.getTransactionAccountRequirement({
+                transactionId: "transactionId",
+            });
+        }).rejects.toThrow(Darwin.UnauthorizedError);
+    });
+
+    test("getTransactionAccountRequirement (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/transactions/transactionId/account-requirement")
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactions.getTransactionAccountRequirement({
+                transactionId: "transactionId",
+            });
+        }).rejects.toThrow(Darwin.ForbiddenError);
+    });
+
+    test("getTransactionAccountRequirement (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .get("/transactions/transactionId/account-requirement")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactions.getTransactionAccountRequirement({
+                transactionId: "transactionId",
+            });
+        }).rejects.toThrow(Darwin.NotFoundError);
+    });
+
     test("actOnTransaction (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
@@ -401,6 +530,9 @@ describe("TransactionsClient", () => {
                 currency: "currency",
                 status: "status",
                 settlementMode: "fixed",
+                sellerAcceptanceStatus: "sellerAcceptanceStatus",
+                customerAccountStatus: "customerAccountStatus",
+                fulfillmentStatus: "fulfillmentStatus",
                 fundedAt: "2024-01-15T09:30:00Z",
                 transferredAt: "2024-01-15T09:30:00Z",
                 refundedAt: "2024-01-15T09:30:00Z",
@@ -525,6 +657,169 @@ describe("TransactionsClient", () => {
                 "Idempotency-Key": "idempotencyKey",
                 transactionId: "transactionId",
                 action: "CANCEL",
+            });
+        }).rejects.toThrow(Darwin.NotFoundError);
+    });
+
+    test("authorizeTransactionPayment (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            type: "STRIPE_SHARED_PAYMENT_TOKEN",
+            networkProfileId: "networkProfileId",
+            grantedToken: "grantedToken",
+        };
+        const rawResponseBody = {
+            paymentAuthorization: {
+                authorizationId: "authorizationId",
+                transactionId: "transactionId",
+                status: "status",
+                providerPaymentIntentId: "providerPaymentIntentId",
+                nextActionRequired: true,
+                clientSecret: "clientSecret",
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/transactions/transactionId/payment-authorizations")
+            .header("Idempotency-Key", "Idempotency-Key")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.transactions.authorizeTransactionPayment({
+            "Idempotency-Key": "Idempotency-Key",
+            transactionId: "transactionId",
+            type: "STRIPE_SHARED_PAYMENT_TOKEN",
+            networkProfileId: "networkProfileId",
+            grantedToken: "grantedToken",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("authorizeTransactionPayment (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            type: "STRIPE_SHARED_PAYMENT_TOKEN",
+            networkProfileId: "networkProfileId",
+            grantedToken: "grantedToken",
+        };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/transactions/transactionId/payment-authorizations")
+            .header("Idempotency-Key", "idempotencyKey")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactions.authorizeTransactionPayment({
+                "Idempotency-Key": "idempotencyKey",
+                transactionId: "transactionId",
+                type: "STRIPE_SHARED_PAYMENT_TOKEN",
+                networkProfileId: "networkProfileId",
+                grantedToken: "grantedToken",
+            });
+        }).rejects.toThrow(Darwin.BadRequestError);
+    });
+
+    test("authorizeTransactionPayment (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            type: "STRIPE_SHARED_PAYMENT_TOKEN",
+            networkProfileId: "networkProfileId",
+            grantedToken: "grantedToken",
+        };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/transactions/transactionId/payment-authorizations")
+            .header("Idempotency-Key", "idempotencyKey")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactions.authorizeTransactionPayment({
+                "Idempotency-Key": "idempotencyKey",
+                transactionId: "transactionId",
+                type: "STRIPE_SHARED_PAYMENT_TOKEN",
+                networkProfileId: "networkProfileId",
+                grantedToken: "grantedToken",
+            });
+        }).rejects.toThrow(Darwin.UnauthorizedError);
+    });
+
+    test("authorizeTransactionPayment (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            type: "STRIPE_SHARED_PAYMENT_TOKEN",
+            networkProfileId: "networkProfileId",
+            grantedToken: "grantedToken",
+        };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/transactions/transactionId/payment-authorizations")
+            .header("Idempotency-Key", "idempotencyKey")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactions.authorizeTransactionPayment({
+                "Idempotency-Key": "idempotencyKey",
+                transactionId: "transactionId",
+                type: "STRIPE_SHARED_PAYMENT_TOKEN",
+                networkProfileId: "networkProfileId",
+                grantedToken: "grantedToken",
+            });
+        }).rejects.toThrow(Darwin.ForbiddenError);
+    });
+
+    test("authorizeTransactionPayment (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            type: "STRIPE_SHARED_PAYMENT_TOKEN",
+            networkProfileId: "networkProfileId",
+            grantedToken: "grantedToken",
+        };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/transactions/transactionId/payment-authorizations")
+            .header("Idempotency-Key", "idempotencyKey")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.transactions.authorizeTransactionPayment({
+                "Idempotency-Key": "idempotencyKey",
+                transactionId: "transactionId",
+                type: "STRIPE_SHARED_PAYMENT_TOKEN",
+                networkProfileId: "networkProfileId",
+                grantedToken: "grantedToken",
             });
         }).rejects.toThrow(Darwin.NotFoundError);
     });

@@ -16,9 +16,6 @@ export declare namespace SkillsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Inspect and configure versioned AI skills.
- */
 export class SkillsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<SkillsClient.Options>;
 
@@ -27,7 +24,7 @@ export class SkillsClient {
     }
 
     /**
-     * @param {Darwin.ListAiSkillsRequest} request
+     * @param {Darwin.ListAiSkillsSkillsRequest} request
      * @param {SkillsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -43,16 +40,16 @@ export class SkillsClient {
      *     })
      */
     public listAiSkills(
-        request: Darwin.ListAiSkillsRequest,
+        request: Darwin.ListAiSkillsSkillsRequest,
         requestOptions?: SkillsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListAiSkillsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListAiSkillsSkillsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listAiSkills(request, requestOptions));
     }
 
     private async __listAiSkills(
-        request: Darwin.ListAiSkillsRequest,
+        request: Darwin.ListAiSkillsSkillsRequest,
         requestOptions?: SkillsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListAiSkillsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListAiSkillsSkillsResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -77,7 +74,7 @@ export class SkillsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListAiSkillsResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListAiSkillsSkillsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -122,14 +119,14 @@ export class SkillsClient {
     public createAiSkill(
         request: Darwin.CreateAiSkillRequest,
         requestOptions?: SkillsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CreateAiSkillResponse> {
+    ): core.HttpResponsePromise<Darwin.CreateAiSkillSkillsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createAiSkill(request, requestOptions));
     }
 
     private async __createAiSkill(
         request: Darwin.CreateAiSkillRequest,
         requestOptions?: SkillsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CreateAiSkillResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.CreateAiSkillSkillsResponse>> {
         const { aiId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -157,7 +154,7 @@ export class SkillsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.CreateAiSkillResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.CreateAiSkillSkillsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -183,7 +180,7 @@ export class SkillsClient {
     }
 
     /**
-     * @param {Darwin.DeleteAiSkillRequest} request
+     * @param {Darwin.DeleteAiSkillSkillsRequest} request
      * @param {SkillsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -200,16 +197,16 @@ export class SkillsClient {
      *     })
      */
     public deleteAiSkill(
-        request: Darwin.DeleteAiSkillRequest,
+        request: Darwin.DeleteAiSkillSkillsRequest,
         requestOptions?: SkillsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.DeleteAiSkillResponse> {
+    ): core.HttpResponsePromise<Darwin.DeleteAiSkillSkillsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__deleteAiSkill(request, requestOptions));
     }
 
     private async __deleteAiSkill(
-        request: Darwin.DeleteAiSkillRequest,
+        request: Darwin.DeleteAiSkillSkillsRequest,
         requestOptions?: SkillsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.DeleteAiSkillResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.DeleteAiSkillSkillsResponse>> {
         const { aiId, skillId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -234,7 +231,7 @@ export class SkillsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.DeleteAiSkillResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.DeleteAiSkillSkillsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -284,14 +281,14 @@ export class SkillsClient {
     public updateAiSkill(
         request: Darwin.UpdateAiSkillRequest,
         requestOptions?: SkillsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.UpdateAiSkillResponse> {
+    ): core.HttpResponsePromise<Darwin.UpdateAiSkillSkillsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__updateAiSkill(request, requestOptions));
     }
 
     private async __updateAiSkill(
         request: Darwin.UpdateAiSkillRequest,
         requestOptions?: SkillsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.UpdateAiSkillResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.UpdateAiSkillSkillsResponse>> {
         const { aiId, skillId, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -319,7 +316,7 @@ export class SkillsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.UpdateAiSkillResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.UpdateAiSkillSkillsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {

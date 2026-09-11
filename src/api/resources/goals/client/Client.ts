@@ -16,9 +16,6 @@ export declare namespace GoalsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Create and manage the durable outcomes an AI pursues across buy, sell, and chat.
- */
 export class GoalsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<GoalsClient.Options>;
 
@@ -27,7 +24,7 @@ export class GoalsClient {
     }
 
     /**
-     * @param {Darwin.ListGoalsRequest} request
+     * @param {Darwin.ListGoalsGoalsRequest} request
      * @param {GoalsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -41,16 +38,16 @@ export class GoalsClient {
      *     await client.goals.listGoals()
      */
     public listGoals(
-        request: Darwin.ListGoalsRequest = {},
+        request: Darwin.ListGoalsGoalsRequest = {},
         requestOptions?: GoalsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListGoalsResponse> {
+    ): core.HttpResponsePromise<Darwin.ListGoalsGoalsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listGoals(request, requestOptions));
     }
 
     private async __listGoals(
-        request: Darwin.ListGoalsRequest = {},
+        request: Darwin.ListGoalsGoalsRequest = {},
         requestOptions?: GoalsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListGoalsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListGoalsGoalsResponse>> {
         const { aiId, mode } = request;
         const _queryParams: Record<string, unknown> = {
             aiId,
@@ -83,7 +80,7 @@ export class GoalsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListGoalsResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListGoalsGoalsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -127,14 +124,14 @@ export class GoalsClient {
     public createGoal(
         request: Darwin.CreateGoalRequest,
         requestOptions?: GoalsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.CreateGoalResponse> {
+    ): core.HttpResponsePromise<Darwin.CreateGoalGoalsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__createGoal(request, requestOptions));
     }
 
     private async __createGoal(
         request: Darwin.CreateGoalRequest,
         requestOptions?: GoalsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.CreateGoalResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.CreateGoalGoalsResponse>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -161,7 +158,7 @@ export class GoalsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.CreateGoalResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.CreateGoalGoalsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -187,7 +184,7 @@ export class GoalsClient {
     }
 
     /**
-     * @param {Darwin.GetGoalRequest} request
+     * @param {Darwin.GetGoalGoalsRequest} request
      * @param {GoalsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -203,16 +200,16 @@ export class GoalsClient {
      *     })
      */
     public getGoal(
-        request: Darwin.GetGoalRequest,
+        request: Darwin.GetGoalGoalsRequest,
         requestOptions?: GoalsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetGoalResponse> {
+    ): core.HttpResponsePromise<Darwin.GetGoalGoalsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getGoal(request, requestOptions));
     }
 
     private async __getGoal(
-        request: Darwin.GetGoalRequest,
+        request: Darwin.GetGoalGoalsRequest,
         requestOptions?: GoalsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetGoalResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetGoalGoalsResponse>> {
         const { id, aiId } = request;
         const _queryParams: Record<string, unknown> = {
             aiId,
@@ -244,7 +241,7 @@ export class GoalsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetGoalResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.GetGoalGoalsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -270,7 +267,7 @@ export class GoalsClient {
     }
 
     /**
-     * @param {Darwin.UpdateGoalBody} request
+     * @param {Darwin.UpdateGoalGoalsRequest} request
      * @param {GoalsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -287,16 +284,16 @@ export class GoalsClient {
      *     })
      */
     public updateGoal(
-        request: Darwin.UpdateGoalBody,
+        request: Darwin.UpdateGoalGoalsRequest,
         requestOptions?: GoalsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.UpdateGoalResponse> {
+    ): core.HttpResponsePromise<Darwin.UpdateGoalGoalsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__updateGoal(request, requestOptions));
     }
 
     private async __updateGoal(
-        request: Darwin.UpdateGoalBody,
+        request: Darwin.UpdateGoalGoalsRequest,
         requestOptions?: GoalsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.UpdateGoalResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.UpdateGoalGoalsResponse>> {
         const { id, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -324,7 +321,7 @@ export class GoalsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.UpdateGoalResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.UpdateGoalGoalsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -352,7 +349,7 @@ export class GoalsClient {
     /**
      * Draft goals can activate; active goals can pause or complete; paused goals can resume or complete; completed goals can archive. Completion is blocked while negotiations, transactions, or recurring agreements remain active.
      *
-     * @param {Darwin.ActOnGoalRequest} request
+     * @param {Darwin.ActOnGoalGoalsRequest} request
      * @param {GoalsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -371,16 +368,16 @@ export class GoalsClient {
      *     })
      */
     public actOnGoal(
-        request: Darwin.ActOnGoalRequest,
+        request: Darwin.ActOnGoalGoalsRequest,
         requestOptions?: GoalsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ActOnGoalResponse> {
+    ): core.HttpResponsePromise<Darwin.ActOnGoalGoalsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__actOnGoal(request, requestOptions));
     }
 
     private async __actOnGoal(
-        request: Darwin.ActOnGoalRequest,
+        request: Darwin.ActOnGoalGoalsRequest,
         requestOptions?: GoalsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ActOnGoalResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ActOnGoalGoalsResponse>> {
         const { id, body: _body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -408,7 +405,7 @@ export class GoalsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ActOnGoalResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ActOnGoalGoalsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -436,7 +433,7 @@ export class GoalsClient {
     /**
      * Creates an actionable request to publish a private goal. Darwin does not publish the goal until the account resolves the request.
      *
-     * @param {Darwin.RequestGoalPublicationRequest} request
+     * @param {Darwin.RequestGoalPublicationGoalsRequest} request
      * @param {GoalsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -453,14 +450,14 @@ export class GoalsClient {
      *     })
      */
     public requestGoalPublication(
-        request: Darwin.RequestGoalPublicationRequest,
+        request: Darwin.RequestGoalPublicationGoalsRequest,
         requestOptions?: GoalsClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.PublicationRequestResult> {
         return core.HttpResponsePromise.fromPromise(this.__requestGoalPublication(request, requestOptions));
     }
 
     private async __requestGoalPublication(
-        request: Darwin.RequestGoalPublicationRequest,
+        request: Darwin.RequestGoalPublicationGoalsRequest,
         requestOptions?: GoalsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.PublicationRequestResult>> {
         const { id, body: _body } = request;

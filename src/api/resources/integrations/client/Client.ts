@@ -15,9 +15,6 @@ export declare namespace IntegrationsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Discover provider toolkits and the capabilities they make available.
- */
 export class IntegrationsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<IntegrationsClient.Options>;
 
@@ -26,7 +23,7 @@ export class IntegrationsClient {
     }
 
     /**
-     * @param {Darwin.GetAiIntegrationsRequest} request
+     * @param {Darwin.GetAiIntegrationsIntegrationsRequest} request
      * @param {IntegrationsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -42,14 +39,14 @@ export class IntegrationsClient {
      *     })
      */
     public getAiIntegrations(
-        request: Darwin.GetAiIntegrationsRequest,
+        request: Darwin.GetAiIntegrationsIntegrationsRequest,
         requestOptions?: IntegrationsClient.RequestOptions,
     ): core.HttpResponsePromise<Darwin.IntegrationCatalog> {
         return core.HttpResponsePromise.fromPromise(this.__getAiIntegrations(request, requestOptions));
     }
 
     private async __getAiIntegrations(
-        request: Darwin.GetAiIntegrationsRequest,
+        request: Darwin.GetAiIntegrationsIntegrationsRequest,
         requestOptions?: IntegrationsClient.RequestOptions,
     ): Promise<core.WithRawResponse<Darwin.IntegrationCatalog>> {
         const { aiId } = request;

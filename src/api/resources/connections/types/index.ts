@@ -1,1 +1,3 @@
-export * from "./ListAiConnectionsResponse.js";
+export * from "./CreateConnectionAssignmentConnectionsResponse.js";
+export * from "./ListAiConnectionsConnectionsResponse.js";
+export * from "./RevokeConnectionAssignmentConnectionsResponse.js";

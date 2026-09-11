@@ -109,6 +109,309 @@ describe("ConnectionsClient", () => {
         }).rejects.toThrow(Darwin.NotFoundError);
     });
 
+    test("createConnectionAssignment (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            targetKind: "AI",
+            targetId: "targetId",
+            retention: "REQUEST_ONLY",
+            scopes: ["scopes"],
+        };
+        const rawResponseBody = {
+            assignment: {
+                id: "id",
+                targetKind: "AI",
+                targetId: "targetId",
+                retentionMode: "REQUEST_ONLY",
+                scopes: ["scopes"],
+                status: "ACTIVE",
+                consentedAt: "2024-01-15T09:30:00Z",
+                expiresAt: "2024-01-15T09:30:00Z",
+                consumedAt: "2024-01-15T09:30:00Z",
+                revokedAt: "2024-01-15T09:30:00Z",
+                createdAt: "2024-01-15T09:30:00Z",
+                updatedAt: "2024-01-15T09:30:00Z",
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .post("/ais/aiId/connections/connectionId/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.connections.createConnectionAssignment({
+            aiId: "aiId",
+            connectionId: "connectionId",
+            targetKind: "AI",
+            targetId: "targetId",
+            retention: "REQUEST_ONLY",
+            scopes: ["scopes"],
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("createConnectionAssignment (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            targetKind: "AI",
+            targetId: "targetId",
+            retention: "REQUEST_ONLY",
+            scopes: ["scopes", "scopes"],
+        };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/ais/aiId/connections/connectionId/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.connections.createConnectionAssignment({
+                aiId: "aiId",
+                connectionId: "connectionId",
+                targetKind: "AI",
+                targetId: "targetId",
+                retention: "REQUEST_ONLY",
+                scopes: ["scopes", "scopes"],
+            });
+        }).rejects.toThrow(Darwin.BadRequestError);
+    });
+
+    test("createConnectionAssignment (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            targetKind: "AI",
+            targetId: "targetId",
+            retention: "REQUEST_ONLY",
+            scopes: ["scopes", "scopes"],
+        };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/ais/aiId/connections/connectionId/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.connections.createConnectionAssignment({
+                aiId: "aiId",
+                connectionId: "connectionId",
+                targetKind: "AI",
+                targetId: "targetId",
+                retention: "REQUEST_ONLY",
+                scopes: ["scopes", "scopes"],
+            });
+        }).rejects.toThrow(Darwin.UnauthorizedError);
+    });
+
+    test("createConnectionAssignment (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            targetKind: "AI",
+            targetId: "targetId",
+            retention: "REQUEST_ONLY",
+            scopes: ["scopes", "scopes"],
+        };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/ais/aiId/connections/connectionId/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.connections.createConnectionAssignment({
+                aiId: "aiId",
+                connectionId: "connectionId",
+                targetKind: "AI",
+                targetId: "targetId",
+                retention: "REQUEST_ONLY",
+                scopes: ["scopes", "scopes"],
+            });
+        }).rejects.toThrow(Darwin.ForbiddenError);
+    });
+
+    test("createConnectionAssignment (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            targetKind: "AI",
+            targetId: "targetId",
+            retention: "REQUEST_ONLY",
+            scopes: ["scopes", "scopes"],
+        };
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .post("/ais/aiId/connections/connectionId/assignments")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.connections.createConnectionAssignment({
+                aiId: "aiId",
+                connectionId: "connectionId",
+                targetKind: "AI",
+                targetId: "targetId",
+                retention: "REQUEST_ONLY",
+                scopes: ["scopes", "scopes"],
+            });
+        }).rejects.toThrow(Darwin.NotFoundError);
+    });
+
+    test("revokeConnectionAssignment (1)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {
+            assignment: {
+                id: "id",
+                targetKind: "AI",
+                targetId: "targetId",
+                retentionMode: "REQUEST_ONLY",
+                scopes: ["scopes"],
+                status: "ACTIVE",
+                consentedAt: "2024-01-15T09:30:00Z",
+                expiresAt: "2024-01-15T09:30:00Z",
+                consumedAt: "2024-01-15T09:30:00Z",
+                revokedAt: "2024-01-15T09:30:00Z",
+                createdAt: "2024-01-15T09:30:00Z",
+                updatedAt: "2024-01-15T09:30:00Z",
+            },
+        };
+
+        server
+            .mockEndpoint()
+            .delete("/ais/aiId/connections/connectionId/assignments/assignmentId")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.connections.revokeConnectionAssignment({
+            aiId: "aiId",
+            connectionId: "connectionId",
+            assignmentId: "assignmentId",
+        });
+        expect(response).toEqual(rawResponseBody);
+    });
+
+    test("revokeConnectionAssignment (2)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .delete("/ais/aiId/connections/connectionId/assignments/assignmentId")
+            .respondWith()
+            .statusCode(400)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.connections.revokeConnectionAssignment({
+                aiId: "aiId",
+                connectionId: "connectionId",
+                assignmentId: "assignmentId",
+            });
+        }).rejects.toThrow(Darwin.BadRequestError);
+    });
+
+    test("revokeConnectionAssignment (3)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .delete("/ais/aiId/connections/connectionId/assignments/assignmentId")
+            .respondWith()
+            .statusCode(401)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.connections.revokeConnectionAssignment({
+                aiId: "aiId",
+                connectionId: "connectionId",
+                assignmentId: "assignmentId",
+            });
+        }).rejects.toThrow(Darwin.UnauthorizedError);
+    });
+
+    test("revokeConnectionAssignment (4)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .delete("/ais/aiId/connections/connectionId/assignments/assignmentId")
+            .respondWith()
+            .statusCode(403)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.connections.revokeConnectionAssignment({
+                aiId: "aiId",
+                connectionId: "connectionId",
+                assignmentId: "assignmentId",
+            });
+        }).rejects.toThrow(Darwin.ForbiddenError);
+    });
+
+    test("revokeConnectionAssignment (5)", async () => {
+        const server = mockServerPool.createServer();
+        const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {};
+
+        server
+            .mockEndpoint()
+            .delete("/ais/aiId/connections/connectionId/assignments/assignmentId")
+            .respondWith()
+            .statusCode(404)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        await expect(async () => {
+            return await client.connections.revokeConnectionAssignment({
+                aiId: "aiId",
+                connectionId: "connectionId",
+                assignmentId: "assignmentId",
+            });
+        }).rejects.toThrow(Darwin.NotFoundError);
+    });
+
     test("createConnectionAuthorizationSession (1)", async () => {
         const server = mockServerPool.createServer();
         const client = new DarwinClient({ maxRetries: 0, token: "test", environment: server.baseUrl });

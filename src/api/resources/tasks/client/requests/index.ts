@@ -1,6 +1,6 @@
-export type { ActOnTaskRequest } from "./ActOnTaskRequest.js";
-export type { GetTaskRequest } from "./GetTaskRequest.js";
-export type { ListTasksRequest } from "./ListTasksRequest.js";
-export type { RequestTaskPublicationApprovalRequest } from "./RequestTaskPublicationApprovalRequest.js";
-export type { RequestTaskPublicationRequest } from "./RequestTaskPublicationRequest.js";
-export type { UpdateTaskBody } from "./UpdateTaskBody.js";
+export type { ActOnTaskTasksRequest } from "./ActOnTaskTasksRequest.js";
+export type { GetTaskTasksRequest } from "./GetTaskTasksRequest.js";
+export type { ListTasksTasksRequest } from "./ListTasksTasksRequest.js";
+export type { RequestTaskPublicationApprovalTasksRequest } from "./RequestTaskPublicationApprovalTasksRequest.js";
+export type { RequestTaskPublicationTasksRequest } from "./RequestTaskPublicationTasksRequest.js";
+export type { UpdateTaskTasksRequest } from "./UpdateTaskTasksRequest.js";

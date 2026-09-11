@@ -15,9 +15,6 @@ export declare namespace PermissionsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Inspect the visibility and access policies applied to an AI.
- */
 export class PermissionsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<PermissionsClient.Options>;
 
@@ -26,7 +23,7 @@ export class PermissionsClient {
     }
 
     /**
-     * @param {Darwin.GetAiPermissionsRequest} request
+     * @param {Darwin.GetAiPermissionsPermissionsRequest} request
      * @param {PermissionsClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -42,16 +39,16 @@ export class PermissionsClient {
      *     })
      */
     public getAiPermissions(
-        request: Darwin.GetAiPermissionsRequest,
+        request: Darwin.GetAiPermissionsPermissionsRequest,
         requestOptions?: PermissionsClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetAiPermissionsResponse> {
+    ): core.HttpResponsePromise<Darwin.GetAiPermissionsPermissionsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getAiPermissions(request, requestOptions));
     }
 
     private async __getAiPermissions(
-        request: Darwin.GetAiPermissionsRequest,
+        request: Darwin.GetAiPermissionsPermissionsRequest,
         requestOptions?: PermissionsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetAiPermissionsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetAiPermissionsPermissionsResponse>> {
         const { aiId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -76,7 +73,10 @@ export class PermissionsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetAiPermissionsResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.GetAiPermissionsPermissionsResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {

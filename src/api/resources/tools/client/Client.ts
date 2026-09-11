@@ -16,9 +16,6 @@ export declare namespace ToolsClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Inspect executable Darwin tools. Generic execution requires owner credentials.
- */
 export class ToolsClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<ToolsClient.Options>;
 
@@ -39,13 +36,15 @@ export class ToolsClient {
      * @example
      *     await client.tools.listTools()
      */
-    public listTools(requestOptions?: ToolsClient.RequestOptions): core.HttpResponsePromise<Darwin.ListToolsResponse> {
+    public listTools(
+        requestOptions?: ToolsClient.RequestOptions,
+    ): core.HttpResponsePromise<Darwin.ListToolsToolsResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listTools(requestOptions));
     }
 
     private async __listTools(
         requestOptions?: ToolsClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListToolsResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListToolsToolsResponse>> {
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             _authRequest.headers,
@@ -69,7 +68,7 @@ export class ToolsClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListToolsResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListToolsToolsResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {

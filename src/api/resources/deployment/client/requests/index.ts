@@ -1,2 +1,2 @@
 export { CreateAiDeploymentRequest } from "./CreateAiDeploymentRequest.js";
-export type { GetAiDeploymentRequest } from "./GetAiDeploymentRequest.js";
+export type { GetAiDeploymentDeploymentRequest } from "./GetAiDeploymentDeploymentRequest.js";

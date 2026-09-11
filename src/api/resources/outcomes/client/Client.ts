@@ -16,9 +16,6 @@ export declare namespace OutcomesClient {
     export interface RequestOptions extends BaseRequestOptions {}
 }
 
-/**
- * Read Darwin-owned outcome projections and submit attributable verification evidence.
- */
 export class OutcomesClient {
     protected readonly _options: NormalizedClientOptionsWithAuth<OutcomesClient.Options>;
 
@@ -27,7 +24,7 @@ export class OutcomesClient {
     }
 
     /**
-     * @param {Darwin.ListOutcomesRequest} request
+     * @param {Darwin.ListOutcomesOutcomesRequest} request
      * @param {OutcomesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -41,16 +38,16 @@ export class OutcomesClient {
      *     await client.outcomes.listOutcomes()
      */
     public listOutcomes(
-        request: Darwin.ListOutcomesRequest = {},
+        request: Darwin.ListOutcomesOutcomesRequest = {},
         requestOptions?: OutcomesClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.ListOutcomesResponse> {
+    ): core.HttpResponsePromise<Darwin.ListOutcomesOutcomesResponse> {
         return core.HttpResponsePromise.fromPromise(this.__listOutcomes(request, requestOptions));
     }
 
     private async __listOutcomes(
-        request: Darwin.ListOutcomesRequest = {},
+        request: Darwin.ListOutcomesOutcomesRequest = {},
         requestOptions?: OutcomesClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.ListOutcomesResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.ListOutcomesOutcomesResponse>> {
         const { aiId } = request;
         const _queryParams: Record<string, unknown> = {
             aiId,
@@ -82,7 +79,7 @@ export class OutcomesClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.ListOutcomesResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.ListOutcomesOutcomesResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -108,7 +105,7 @@ export class OutcomesClient {
     }
 
     /**
-     * @param {Darwin.GetOutcomeRequest} request
+     * @param {Darwin.GetOutcomeOutcomesRequest} request
      * @param {OutcomesClient.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @throws {@link Darwin.BadRequestError}
@@ -124,16 +121,16 @@ export class OutcomesClient {
      *     })
      */
     public getOutcome(
-        request: Darwin.GetOutcomeRequest,
+        request: Darwin.GetOutcomeOutcomesRequest,
         requestOptions?: OutcomesClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.GetOutcomeResponse> {
+    ): core.HttpResponsePromise<Darwin.GetOutcomeOutcomesResponse> {
         return core.HttpResponsePromise.fromPromise(this.__getOutcome(request, requestOptions));
     }
 
     private async __getOutcome(
-        request: Darwin.GetOutcomeRequest,
+        request: Darwin.GetOutcomeOutcomesRequest,
         requestOptions?: OutcomesClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.GetOutcomeResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.GetOutcomeOutcomesResponse>> {
         const { outcomeId } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -158,7 +155,7 @@ export class OutcomesClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.GetOutcomeResponse, rawResponse: _response.rawResponse };
+            return { data: _response.body as Darwin.GetOutcomeOutcomesResponse, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {
@@ -206,14 +203,14 @@ export class OutcomesClient {
     public submitOutcomeEvidence(
         request: Darwin.SubmitOutcomeEvidenceRequest,
         requestOptions?: OutcomesClient.RequestOptions,
-    ): core.HttpResponsePromise<Darwin.SubmitOutcomeEvidenceResponse> {
+    ): core.HttpResponsePromise<Darwin.SubmitOutcomeEvidenceOutcomesResponse> {
         return core.HttpResponsePromise.fromPromise(this.__submitOutcomeEvidence(request, requestOptions));
     }
 
     private async __submitOutcomeEvidence(
         request: Darwin.SubmitOutcomeEvidenceRequest,
         requestOptions?: OutcomesClient.RequestOptions,
-    ): Promise<core.WithRawResponse<Darwin.SubmitOutcomeEvidenceResponse>> {
+    ): Promise<core.WithRawResponse<Darwin.SubmitOutcomeEvidenceOutcomesResponse>> {
         const { outcomeId, "Idempotency-Key": idempotencyKey, ..._body } = request;
         const _authRequest: core.AuthRequest = await this._options.authProvider.getAuthRequest();
         const _headers: core.Fetcher.Args["headers"] = mergeHeaders(
@@ -242,7 +239,10 @@ export class OutcomesClient {
             logging: this._options.logging,
         });
         if (_response.ok) {
-            return { data: _response.body as Darwin.SubmitOutcomeEvidenceResponse, rawResponse: _response.rawResponse };
+            return {
+                data: _response.body as Darwin.SubmitOutcomeEvidenceOutcomesResponse,
+                rawResponse: _response.rawResponse,
+            };
         }
 
         if (_response.error.reason === "status-code") {
